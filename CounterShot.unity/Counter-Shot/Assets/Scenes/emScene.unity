@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 506066716}
   - component: {fileID: 506066715}
   - component: {fileID: 506066714}
-  - component: {fileID: 506066713}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -142,19 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &506066713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506066712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76553429e8971d43b523779ec42544e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoCounter: {fileID: 0}
 --- !u!114 &506066714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +331,7 @@ GameObject:
   - component: {fileID: 525216480}
   - component: {fileID: 525216481}
   - component: {fileID: 525216482}
+  - component: {fileID: 525216483}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -436,7 +423,7 @@ MonoBehaviour:
   moveSpeed: 10
   gunBaseTransform: {fileID: 2061944408}
   gunImageTransform: {fileID: 1064936455}
-  attackRate: 1
+  attackRate: 0
   projectile: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
   ammo: 6
   parryZone: {fileID: 525216482}
@@ -606,6 +593,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &525216483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525216474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2837940cebdc4147b2412917096a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 3
 --- !u!1 &606679686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,9 +1105,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 506066717}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -482, y: 305}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 132, y: -58}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995638689

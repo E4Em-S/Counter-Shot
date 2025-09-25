@@ -109,7 +109,7 @@ public class CharacterController : MonoBehaviour
         if (collision.tag =="Parryable")
         {
             ammo++;
-            Debug.Log(collision.gameObject);
+            //Debug.Log(collision.gameObject);
             Destroy(collision.gameObject);
         }
         if(ammo > 6)

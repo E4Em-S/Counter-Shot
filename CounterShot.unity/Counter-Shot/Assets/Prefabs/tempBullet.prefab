@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  bulletSpeed: 10
+  bulletSpeed: 15
   destroyOnContact: 1
