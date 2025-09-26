@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using TMPro;
-public class CharacterController : MonoBehaviour
+public class CowboyCharacterController : MonoBehaviour
 {
     DiffWeaponsSO weapon;
     //movement
@@ -14,7 +14,7 @@ public class CharacterController : MonoBehaviour
 
     [Header("changeables")]
     [SerializeField] public float moveSpeed;
-    
+
 
     //aiming
     Vector2 lookDir;
@@ -30,7 +30,11 @@ public class CharacterController : MonoBehaviour
     public int ammo = 6;
 
     [Header("parrying")]
+    public bool isParrying = false;
+    [SerializeField] int pps; //pps
     [SerializeField] Collider2D parryZone;
+
+
     //GameObject parryZone;
 
     //UI
@@ -41,14 +45,14 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         SetWeaponSO(weapon);
-        parryZone.enabled = false;
+        //parryZone.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         ammoCounter.text = "Ammo: " + ammo;
-        if(ammo <= 0)
+        if (ammo <= 0)
         {
             ammo = 0;
             //add some juice to encourage parrying here
@@ -59,16 +63,20 @@ public class CharacterController : MonoBehaviour
         rb.velocity = movementInput * moveSpeed;
     }
 
-    public void OnMove(InputValue value) 
+    public void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
     }
     public void OnLook(InputValue lookValue)
     {
         lookDir = lookValue.Get<Vector2>().normalized;
-        if(Mathf.Abs(lookDir.magnitude)> 0)
+        if (Mathf.Abs(lookDir.magnitude) > 0)
         {
             gunBaseTransform.up = lookDir;
+        }
+        else
+        {
+            //gunBaseTransform.up = lookDir;
         }
     }
     public void OnFire(InputValue fireValue)
@@ -77,19 +85,20 @@ public class CharacterController : MonoBehaviour
         //if (lookDir.Get<Vectgor2>().normalized > 0)//if(Mathf.Abs(fireValue.Get<float>()) > 0)
         // {
         ammo--;
-            attacking = true;
-            //Debug.Log("Firing?");
-            if (attackRdy && ammo > 0)
-            {
-                StartCoroutine(Shoot());
-           // }
+        attacking = true;
+        if (attackRdy && ammo > 0)
+        {
+            StartCoroutine(Shoot());
+            // }
         }
         else attacking = false;
     }
     public void OnParry(InputValue parryValue)
     {
-        Debug.Log("parrying");
-        parryZone.enabled = true;
+        //Debug.Log("parrying");
+        isParrying = true;
+        StartCoroutine(Parry());
+        //parryZone.enabled = true;
     }
     public void SetWeaponSO(DiffWeaponsSO myWeapons)
     {
@@ -106,19 +115,26 @@ public class CharacterController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag =="Parryable")
+        if (isParrying == true)
         {
-            ammo++;
-            //Debug.Log(collision.gameObject);
-            Destroy(collision.gameObject);
+            if (collision.tag == "Parryable")
+            {
+                ammo++;
+                Debug.Log("parried: " + collision.gameObject);
+                //Destroy(collision.gameObject);
+            }
+            if (ammo > 6)
+            {
+                ammo = 6;
+            }
         }
-        if(ammo > 6)
-        {
-            ammo = 6;
-        }
-       
-
-        
+    }
+    IEnumerator Parry()
+    {
+        parryZone.enabled = true;
+        yield return new WaitForSeconds(pps);
+        parryZone.enabled = false;
+        isParrying = false;
     }
 }
 
