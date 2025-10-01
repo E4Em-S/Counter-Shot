@@ -898,6 +898,8 @@ MonoBehaviour:
   playerHitbox: {fileID: 787983584}
   playerHealth: 3
   healthUI: {fileID: 379248303}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDur: 0.1
 --- !u!70 &787983584
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1145,6 +1147,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3454794167289994973, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
   m_PrefabInstance: {fileID: 4434400894776330735}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1772931831 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 783271806919733090, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+  m_PrefabInstance: {fileID: 4434400894776330735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1964855037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,6 +1277,10 @@ PrefabInstance:
       propertyPath: playerHitbox
       value: 
       objectReference: {fileID: 1772931820}
+    - target: {fileID: 5350383095976655681, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: playerRenderer
+      value: 
+      objectReference: {fileID: 1772931831}
     - target: {fileID: 6230492556412841218, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_Enabled
       value: 0

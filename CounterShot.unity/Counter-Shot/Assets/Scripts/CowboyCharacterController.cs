@@ -41,6 +41,13 @@ public class CowboyCharacterController : MonoBehaviour
     //UI
     public TextMeshProUGUI ammoCounter;
 
+    [Header("flashingColor")]
+   // public Renderer playerRenderer;
+    public Color flashColor = Color.yellow;
+    public float flashDur = 0.1f;
+
+    private Color ogColor;
+
 
     // Start is called before the first frame update
     void Start()
