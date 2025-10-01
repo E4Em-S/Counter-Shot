@@ -27,15 +27,16 @@ public class CowboyCharacterController : MonoBehaviour
     GameObject attackTemp;
     bool attacking = false;
     bool attackRdy = true;
-    public int ammo = 6;
+    public int ammo = 5;
 
     [Header("parrying")]
     public bool isParrying = false;
     [SerializeField] int pps; //pps
-    [SerializeField] Collider2D parryZone;
+    [SerializeField] CircleCollider2D parryZone;
 
 
-    //GameObject parryZone;
+    [SerializeField] Collider2D playerHitbox;
+    public int playerHealth = 3;
 
     //UI
     public TextMeshProUGUI ammoCounter;
@@ -45,7 +46,9 @@ public class CowboyCharacterController : MonoBehaviour
     void Start()
     {
         SetWeaponSO(weapon);
-        //parryZone.enabled = false;
+        playerHitbox.enabled = true;
+
+        parryZone.enabled = false;
     }
 
     // Update is called once per frame
@@ -83,22 +86,20 @@ public class CowboyCharacterController : MonoBehaviour
     {
         //still need to figure out something to prevent it from firing when not aiming
         //if (lookDir.Get<Vectgor2>().normalized > 0)//if(Mathf.Abs(fireValue.Get<float>()) > 0)
-        // {
+      
         ammo--;
         attacking = true;
         if (attackRdy && ammo > 0)
         {
             StartCoroutine(Shoot());
-            // }
+          
         }
         else attacking = false;
     }
     public void OnParry(InputValue parryValue)
     {
-        //Debug.Log("parrying");
         isParrying = true;
         StartCoroutine(Parry());
-        //parryZone.enabled = true;
     }
     public void SetWeaponSO(DiffWeaponsSO myWeapons)
     {
@@ -119,17 +120,19 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
+                Destroy(collision.gameObject);
                 ammo++;
-                Debug.Log("parried: " + collision.gameObject);
-                //Destroy(collision.gameObject);
-            }
+                //Debug.Log("parry collision w: " + collision.gameObject);
+                
+            }//come up with full ammo system when doing other weapons and change this bullshit
             if (ammo > 6)
             {
                 ammo = 6;
             }
         }
     }
-    IEnumerator Parry()
+  
+    IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
         yield return new WaitForSeconds(pps);

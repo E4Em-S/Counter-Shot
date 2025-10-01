@@ -118,7 +118,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2522018661503860289}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_ActionId: b1b880ad-9780-44f5-a7f1-e328fb683a9a
     m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -169,6 +181,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 021e0d4c-b084-48f6-8f1f-409aba74ac68
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d62d266-2fd1-43ab-a519-ed950b5b3184
+    m_ActionName: Player/Parry[/SwitchProControllerHID/leftShoulder,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -193,6 +209,9 @@ MonoBehaviour:
   attackRate: 0
   projectile: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
   ammo: 6
+  isParrying: 0
+  pps: 1
+  parryZone: {fileID: 1168657482389586690}
   ammoCounter: {fileID: 0}
 --- !u!50 &6629830673468361233
 Rigidbody2D:
@@ -418,6 +437,7 @@ GameObject:
   - component: {fileID: 6976433912465166872}
   - component: {fileID: 1168657482389586690}
   - component: {fileID: 4609944550065269905}
+  - component: {fileID: 1525841493520520013}
   m_Layer: 0
   m_Name: parryCircle
   m_TagString: Untagged
@@ -482,7 +502,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7834146988894735158}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b024036f4d07f33449c780342323cbb0, type: 3}
   m_Name: 
@@ -490,3 +510,33 @@ MonoBehaviour:
   isParrying: 0
   pps: 1
   parryZone: {fileID: 1168657482389586690}
+--- !u!114 &1525841493520520013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7834146988894735158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: d2555b7c0432d2c4b8a9ee2771301b1c, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
