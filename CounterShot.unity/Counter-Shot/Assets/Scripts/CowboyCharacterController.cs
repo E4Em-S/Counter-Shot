@@ -31,7 +31,7 @@ public class CowboyCharacterController : MonoBehaviour
 
     [Header("parrying")]
     public bool isParrying = false;
-    [SerializeField] int pps; //pps
+    [SerializeField] float parryDur; //parry durration
     [SerializeField] CircleCollider2D parryZone;
 
 
@@ -42,11 +42,12 @@ public class CowboyCharacterController : MonoBehaviour
     public TextMeshProUGUI ammoCounter;
 
     [Header("flashingColor")]
-   // public Renderer playerRenderer;
+    public Renderer playerRenderer;
     public Color flashColor = Color.yellow;
     public float flashDur = 0.1f;
-
     private Color ogColor;
+    public float freezeDur;
+    bool isFrozen = false;
 
 
     // Start is called before the first frame update
@@ -56,6 +57,9 @@ public class CowboyCharacterController : MonoBehaviour
         playerHitbox.enabled = true;
 
         parryZone.enabled = false;
+
+        playerRenderer = GetComponent<Renderer>();
+        ogColor = playerRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -93,13 +97,13 @@ public class CowboyCharacterController : MonoBehaviour
     {
         //still need to figure out something to prevent it from firing when not aiming
         //if (lookDir.Get<Vectgor2>().normalized > 0)//if(Mathf.Abs(fireValue.Get<float>()) > 0)
-      
+
         ammo--;
         attacking = true;
         if (attackRdy && ammo > 0)
         {
             StartCoroutine(Shoot());
-          
+
         }
         else attacking = false;
     }
@@ -127,10 +131,12 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
+                StartCoroutine(DoFreeze());
                 Destroy(collision.gameObject);
                 ammo++;
+
                 //Debug.Log("parry collision w: " + collision.gameObject);
-                
+
             }//come up with full ammo system when doing other weapons and change this bullshit
             if (ammo > 6)
             {
@@ -138,14 +144,26 @@ public class CowboyCharacterController : MonoBehaviour
             }
         }
     }
-  
+
     IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
-        yield return new WaitForSeconds(pps);
+        playerRenderer.material.color = flashColor;
+        yield return new WaitForSecondsRealtime(parryDur);
+        playerRenderer.material.color = ogColor;
         parryZone.enabled = false;
         isParrying = false;
+
     }
+    IEnumerator DoFreeze()
+    {
+        isFrozen = true;
+        Time.timeScale = 0.2f;
+        yield return new WaitForSecondsRealtime(freezeDur);
+        Time.timeScale = 1f;
+        isFrozen = false;
+    }
+   
 }
 
 

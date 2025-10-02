@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public TextMeshProUGUI healthUI;
 
     [Header("taking dam")]
-    //public Renderer playerRenderer;
+    public Renderer playerRenderer;
     public Color flashColor = Color.red;
     public float flashDur = 0.1f;
 
@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHitbox.enabled = true;
         //playerRenderer = GetComponent<Renderer>();
-       // ogColor = playerRenderer.material.color;
+        //ogColor = playerRenderer.material.color;
     }
     public void flashRed()
     {
