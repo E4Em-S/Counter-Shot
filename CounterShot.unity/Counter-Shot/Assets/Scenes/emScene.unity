@@ -746,14 +746,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1980710847531316375, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980710847531316375, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2522018661503860289, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -798,9 +790,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5350383095976655681, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
-      propertyPath: freezeDur
-      value: 0.1
+    - target: {fileID: 7834146988894735158, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_TagString
+      value: parryCircle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

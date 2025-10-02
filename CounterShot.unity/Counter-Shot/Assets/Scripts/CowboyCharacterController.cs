@@ -35,6 +35,7 @@ public class CowboyCharacterController : MonoBehaviour
     [SerializeField] CircleCollider2D parryZone;
 
 
+
     [SerializeField] Collider2D playerHitbox;
     public int playerHealth = 3;
 
@@ -49,7 +50,10 @@ public class CowboyCharacterController : MonoBehaviour
     public float freezeDur;
     bool isFrozen = false;
 
-
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -132,7 +136,8 @@ public class CowboyCharacterController : MonoBehaviour
             if (collision.tag == "Parryable")
             {
                 StartCoroutine(DoFreeze());
-                Destroy(collision.gameObject);
+                //StartCoroutine(PoopieChudWaitForSec());
+                
                 ammo++;
 
                 //Debug.Log("parry collision w: " + collision.gameObject);
