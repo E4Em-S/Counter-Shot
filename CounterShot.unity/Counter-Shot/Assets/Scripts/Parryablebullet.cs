@@ -18,11 +18,6 @@ public class Parryablebullet : MonoBehaviour
         StartCoroutine(Destroyself());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator Destroyself()
     {
         yield return new WaitForSeconds(6);
@@ -49,9 +44,5 @@ public class Parryablebullet : MonoBehaviour
     {
         //StartCoroutine(PoopieChudWaitForSec());
         Destroy(gameObject);
-    }
-     IEnumerator PoopieChudWaitForSec()
-    {
-        yield return new WaitForSeconds(2f);
     }
 }

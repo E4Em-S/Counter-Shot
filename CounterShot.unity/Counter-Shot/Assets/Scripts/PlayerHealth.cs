@@ -13,9 +13,9 @@ public class PlayerHealth : MonoBehaviour
     public TextMeshProUGUI healthUI;
 
     [Header("taking dam")]
-    public Renderer playerRenderer;
+    [SerializeField] SpriteRenderer playerRenderer;
     public Color flashColor = Color.red;
-    public float flashDur = 0.1f;
+    public float flashDur = 0.2f;
 
     private Color ogColor;
 
@@ -23,26 +23,17 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         playerHitbox.enabled = true;
-        //playerRenderer = GetComponent<Renderer>();
-        //ogColor = playerRenderer.material.color;
-    }
-    public void flashRed()
-    {
-        StopAllCoroutines();
-        StartCoroutine(FlashRed());
+        ogColor = playerRenderer.material.color;
     }
     public void OnTriggerEnter2D(Collider2D other) //checking for damage to player specifically
     {
-        playerHealth--;
-        //FlashRed();
+        
+        if (other.tag == "EnemyProjectile" || other.tag == "Parryable")
         {
-            if (other.tag == "EnemyProjectile" || other.tag == "Parryable")
-        {
-                
+            playerHealth--;
+            StartCoroutine(FlashRed());
             Debug.Log("Took damage from: " + other.gameObject);
         }
-        }
-        
     }
     private void Update()
     {
@@ -52,10 +43,16 @@ public class PlayerHealth : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+       public void flashRed()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlashRed());
+    }
     IEnumerator FlashRed()
     {
-       // playerRenderer.material.color = flashColor;
+        Debug.Log("flashing red");
+        playerRenderer.material.color = flashColor;
         yield return new WaitForSeconds(flashDur);
-       // playerRenderer.material.color = ogColor;
+        playerRenderer.material.color = ogColor;
     }
 }

@@ -15,7 +15,6 @@ public class CowboyCharacterController : MonoBehaviour
     [Header("changeables")]
     [SerializeField] public float moveSpeed;
 
-
     //aiming
     Vector2 lookDir;
     [SerializeField] Transform gunBaseTransform;
@@ -27,21 +26,20 @@ public class CowboyCharacterController : MonoBehaviour
     GameObject attackTemp;
     bool attacking = false;
     bool attackRdy = true;
-    public int ammo = 5;
+    public int ammo = 0;
 
     [Header("parrying")]
     public bool isParrying = false;
     [SerializeField] float parryDur; //parry durration
     [SerializeField] CircleCollider2D parryZone;
 
-
-
+    [Header("PlayerHealth")]
     [SerializeField] Collider2D playerHitbox;
     public int playerHealth = 3;
 
     //UI
     public TextMeshProUGUI ammoCounter;
-
+    
     [Header("flashingColor")]
     public Renderer playerRenderer;
     public Color flashColor = Color.yellow;
@@ -50,6 +48,9 @@ public class CowboyCharacterController : MonoBehaviour
     public float freezeDur;
     bool isFrozen = false;
 
+
+
+    bool isAiming; //check if the right stick is recieving input
     void Awake()
     {
         Time.timeScale = 1;
@@ -59,9 +60,7 @@ public class CowboyCharacterController : MonoBehaviour
     {
         SetWeaponSO(weapon);
         playerHitbox.enabled = true;
-
         parryZone.enabled = false;
-
         playerRenderer = GetComponent<Renderer>();
         ogColor = playerRenderer.material.color;
     }
@@ -70,7 +69,7 @@ public class CowboyCharacterController : MonoBehaviour
     void Update()
     {
         ammoCounter.text = "Ammo: " + ammo;
-        if (ammo <= 0)
+        if (ammo < 0)
         {
             ammo = 0;
             //add some juice to encourage parrying here
@@ -87,29 +86,30 @@ public class CowboyCharacterController : MonoBehaviour
     }
     public void OnLook(InputValue lookValue)
     {
+        isAiming = true; 
         lookDir = lookValue.Get<Vector2>().normalized;
         if (Mathf.Abs(lookDir.magnitude) > 0)
         {
             gunBaseTransform.up = lookDir;
         }
-        else
+        if (lookValue.Get<Vector2>() == Vector2.zero) //when there is no more input from right stick (zero vector 2) 
         {
-            //gunBaseTransform.up = lookDir;
+            isAiming = false;
         }
     }
     public void OnFire(InputValue fireValue)
     {
-        //still need to figure out something to prevent it from firing when not aiming
-        //if (lookDir.Get<Vectgor2>().normalized > 0)//if(Mathf.Abs(fireValue.Get<float>()) > 0)
-
-        ammo--;
-        attacking = true;
-        if (attackRdy && ammo > 0)
+        if (isAiming == true) //checking that the player is aiming to attack
         {
-            StartCoroutine(Shoot());
-
+            
+            attacking = true;
+            if (attackRdy && ammo > 0)
+            {
+                ammo--;
+                StartCoroutine(Shoot());
+            }
+            else attacking = false;
         }
-        else attacking = false;
     }
     public void OnParry(InputValue parryValue)
     {
@@ -123,12 +123,22 @@ public class CowboyCharacterController : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.identity);
-        attackTemp.BroadcastMessage("SetDirection", lookDir);
-        attackRdy = false;
-        yield return new WaitForSeconds(attackRate);
-        attackRdy = true;
+        if (isAiming == true) //makes it so the player only can attack when aim is held down
+        {
+            attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir));
+            attackTemp.BroadcastMessage("SetDirection", lookDir);
+            attackRdy = false;
+            yield return new WaitForSeconds(attackRate);
+            attackRdy = true;
+        }
+        
     }
+   /* public void SetAimDir(Vector3 targetDir) //didnt work
+    {
+        Vector3 normalizedDirection = targetDir.normalized;
+        attackTemp.transform.rotation = Quaternion.LookRotation(normalizedDirection);
+        
+    }*/
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isParrying == true)
@@ -136,10 +146,7 @@ public class CowboyCharacterController : MonoBehaviour
             if (collision.tag == "Parryable")
             {
                 StartCoroutine(DoFreeze());
-                //StartCoroutine(PoopieChudWaitForSec());
-                
                 ammo++;
-
                 //Debug.Log("parry collision w: " + collision.gameObject);
 
             }//come up with full ammo system when doing other weapons and change this bullshit
@@ -153,9 +160,9 @@ public class CowboyCharacterController : MonoBehaviour
     IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
-        playerRenderer.material.color = flashColor;
+        //playerRenderer.material.color = flashColor;
         yield return new WaitForSecondsRealtime(parryDur);
-        playerRenderer.material.color = ogColor;
+       // playerRenderer.material.color = ogColor;
         parryZone.enabled = false;
         isParrying = false;
 
