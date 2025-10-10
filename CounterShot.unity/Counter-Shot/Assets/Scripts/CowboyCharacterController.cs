@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.EventSystems;
 public class CowboyCharacterController : MonoBehaviour
 {
     DiffWeaponsSO weapon;
@@ -37,9 +38,16 @@ public class CowboyCharacterController : MonoBehaviour
     [SerializeField] Collider2D playerHitbox;
     public int playerHealth = 3;
 
+    [Header("Dash")]
+    bool isDashing;
+    bool canDash;
+    [SerializeField] float dashSpeed = 10f;
+    [SerializeField] float dashDur = 1f;
+    [SerializeField] float dashCooldown = 1f;
+
     //UI
     public TextMeshProUGUI ammoCounter;
-    
+
     [Header("flashingColor")]
     public Renderer playerRenderer;
     public Color flashColor = Color.yellow;
@@ -58,6 +66,7 @@ public class CowboyCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canDash = true;
         SetWeaponSO(weapon);
         playerHitbox.enabled = true;
         parryZone.enabled = false;
@@ -86,7 +95,7 @@ public class CowboyCharacterController : MonoBehaviour
     }
     public void OnLook(InputValue lookValue)
     {
-        isAiming = true; 
+        isAiming = true;
         lookDir = lookValue.Get<Vector2>().normalized;
         if (Mathf.Abs(lookDir.magnitude) > 0)
         {
@@ -97,11 +106,18 @@ public class CowboyCharacterController : MonoBehaviour
             isAiming = false;
         }
     }
+    public void OnDash(InputValue dashValue)
+    {
+       // if (isAiming == true)
+        {
+            StartCoroutine(Dash());
+        }
+    }
     public void OnFire(InputValue fireValue)
     {
         if (isAiming == true) //checking that the player is aiming to attack
         {
-            
+
             attacking = true;
             if (attackRdy && ammo > 0)
             {
@@ -131,14 +147,9 @@ public class CowboyCharacterController : MonoBehaviour
             yield return new WaitForSeconds(attackRate);
             attackRdy = true;
         }
-        
+
     }
-   /* public void SetAimDir(Vector3 targetDir) //didnt work
-    {
-        Vector3 normalizedDirection = targetDir.normalized;
-        attackTemp.transform.rotation = Quaternion.LookRotation(normalizedDirection);
-        
-    }*/
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isParrying == true)
@@ -162,7 +173,7 @@ public class CowboyCharacterController : MonoBehaviour
         parryZone.enabled = true;
         //playerRenderer.material.color = flashColor;
         yield return new WaitForSecondsRealtime(parryDur);
-       // playerRenderer.material.color = ogColor;
+        // playerRenderer.material.color = ogColor;
         parryZone.enabled = false;
         isParrying = false;
 
@@ -175,7 +186,21 @@ public class CowboyCharacterController : MonoBehaviour
         Time.timeScale = 1f;
         isFrozen = false;
     }
-   
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+       // movementInput = new Vector2(lookDir.x * dashSpeed, lookDir.y * dashSpeed);
+        movementInput = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
+       // rb.velocity = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
+        // rb.velocity = new Vector2(lookDir.x * dashSpeed, lookDir.y * dashSpeed);
+        yield return new WaitForSeconds(dashDur);
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+  
 }
 
 
