@@ -77,8 +77,6 @@ public class CowboyCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(canDash);
-
         ammoCounter.text = "Ammo: " + ammo;
         if (ammo < 0)
         {

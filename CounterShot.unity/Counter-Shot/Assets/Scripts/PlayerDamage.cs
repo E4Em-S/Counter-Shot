@@ -22,13 +22,14 @@ public class PlayerDamage : MonoBehaviour
     }
 
 
+//something that checks what weapon player has & how much damage it does 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
-            Debug.Log("Damaging");
-            //collision.gameObject.GetComponent // put refrence to enemy script here //.AddDamage(damage)
-            if(destroyOnContact) Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyHealth>().AddDamage(damage);
+            if (destroyOnContact) Destroy(gameObject);
         }
     }
 }

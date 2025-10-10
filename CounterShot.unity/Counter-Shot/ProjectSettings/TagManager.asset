@@ -8,6 +8,7 @@ TagManager:
   - Parryable
   - parryCircle
   - playerBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
