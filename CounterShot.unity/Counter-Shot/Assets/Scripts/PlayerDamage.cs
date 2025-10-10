@@ -29,6 +29,7 @@ public class PlayerDamage : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyHealth>().AddDamage(damage);
+            collision.gameObject.GetComponent<EnemyHealthBar>().UpdateHealthBar(damage);
             if (destroyOnContact) Destroy(gameObject);
         }
     }
