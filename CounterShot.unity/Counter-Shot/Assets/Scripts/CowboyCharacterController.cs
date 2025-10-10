@@ -77,6 +77,8 @@ public class CowboyCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(canDash);
+
         ammoCounter.text = "Ammo: " + ammo;
         if (ammo < 0)
         {
@@ -91,7 +93,10 @@ public class CowboyCharacterController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        movementInput = value.Get<Vector2>();
+        if(isDashing == false)
+        {
+            movementInput = value.Get<Vector2>();
+        }
     }
     public void OnLook(InputValue lookValue)
     {
@@ -108,7 +113,7 @@ public class CowboyCharacterController : MonoBehaviour
     }
     public void OnDash(InputValue dashValue)
     {
-       // if (isAiming == true)
+        // if (isAiming == true)
         {
             StartCoroutine(Dash());
         }
@@ -139,9 +144,9 @@ public class CowboyCharacterController : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        if (isAiming == true) //makes it so the player only can attack when aim is held down
+        if (isAiming == true && isDashing == false) //makes it so the player only can attack when aim is held down &  when not dashing
         {
-            attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir));
+            attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
             attackTemp.BroadcastMessage("SetDirection", lookDir);
             attackRdy = false;
             yield return new WaitForSeconds(attackRate);
@@ -188,6 +193,9 @@ public class CowboyCharacterController : MonoBehaviour
     }
     private IEnumerator Dash()
     {
+        //attackTemp.BroadcastMessage("SetDirection", lookDir);
+
+
         canDash = false;
         isDashing = true;
        // movementInput = new Vector2(lookDir.x * dashSpeed, lookDir.y * dashSpeed);

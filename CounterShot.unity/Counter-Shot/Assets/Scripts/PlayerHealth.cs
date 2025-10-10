@@ -32,7 +32,7 @@ public class PlayerHealth : MonoBehaviour
         {
             playerHealth--;
             StartCoroutine(FlashRed());
-            Debug.Log("Took damage from: " + other.gameObject);
+            //Debug.Log("Took damage from: " + other.gameObject);
         }
     }
     private void Update()
@@ -50,7 +50,6 @@ public class PlayerHealth : MonoBehaviour
     }
     IEnumerator FlashRed()
     {
-        Debug.Log("flashing red");
         playerRenderer.material.color = flashColor;
         yield return new WaitForSeconds(flashDur);
         playerRenderer.material.color = ogColor;
