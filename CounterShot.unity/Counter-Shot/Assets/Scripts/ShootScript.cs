@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 
-public class Weapon : MonoBehaviour
+public class ShootScript : MonoBehaviour
 {
     public DiffWeaponsSO weaponData;
      //aiming
@@ -21,8 +22,31 @@ public class Weapon : MonoBehaviour
     public int ammo = 0;
     bool isAiming;
     bool isDashing;
+    public TextMeshProUGUI ammoCounter;
 
 
+    public void Update()
+    {
+         ammoCounter.text = "Ammo: " + ammo;
+        if (ammo < 0)
+        {
+            ammo = 0;
+            //add some juice to encourage parrying here
+        }
+    }
+    public void OnLook(InputValue lookValue)
+    {
+        isAiming = true;
+        lookDir = lookValue.Get<Vector2>().normalized;
+        if (Mathf.Abs(lookDir.magnitude) > 0)
+        {
+            gunBaseTransform.up = lookDir;
+        }
+        if (lookValue.Get<Vector2>() == Vector2.zero) //when there is no more input from right stick (zero vector 2) 
+        {
+            isAiming = false;
+        }
+    }
     public void SetWeaponSO(DiffWeaponsSO myWeapons)
     {
         //weapon = myWeapons;
@@ -30,6 +54,7 @@ public class Weapon : MonoBehaviour
     }
     public void OnFire(InputValue fireValue)
     {
+        Debug.Log("firing");
         if (isAiming == true) //checking that the player is aiming to attack
         {
 

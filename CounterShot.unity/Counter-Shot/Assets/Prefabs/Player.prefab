@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6629830673468361233}
   - component: {fileID: 5517898443646091974}
   - component: {fileID: 797559830877514880}
+  - component: {fileID: 353947055206942490}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -215,6 +216,9 @@ MonoBehaviour:
   parryZone: {fileID: 1168657482389586690}
   playerHitbox: {fileID: 797559830877514880}
   playerHealth: 3
+  dashSpeed: 10
+  dashDur: 1
+  dashCooldown: 1
   ammoCounter: {fileID: 2916217420761057854}
   playerRenderer: {fileID: 783271806919733090}
   flashColor: {r: 1, g: 0, b: 0.827451, a: 1}
@@ -303,6 +307,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5625, y: 0.9375}
   m_Direction: 0
+--- !u!114 &353947055206942490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522018661503860289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0d88bab1e9eb7438e4e4838fb916bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 36ff3ef030b90d344bf679e37ba04035, type: 2}
+  gunBaseTransform: {fileID: 8394631725372379491}
+  gunImageTransform: {fileID: 2056215509670440807}
+  attackRate: 0
+  projectile: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
+  ammo: 4
 --- !u!1 &3199924984457415303
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +604,7 @@ GameObject:
   - component: {fileID: 2056215509670440807}
   - component: {fileID: 3320399123127448146}
   m_Layer: 0
-  m_Name: gunPlaceholder
+  m_Name: GunHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

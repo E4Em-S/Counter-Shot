@@ -96,7 +96,7 @@ public class CowboyCharacterController : MonoBehaviour
             movementInput = value.Get<Vector2>();
         }
     }
-    public void OnLook(InputValue lookValue)
+   /* public void OnLook(InputValue lookValue)
     {
         isAiming = true;
         lookDir = lookValue.Get<Vector2>().normalized;
@@ -108,7 +108,7 @@ public class CowboyCharacterController : MonoBehaviour
         {
             isAiming = false;
         }
-    }
+    }*/
     public void OnDash(InputValue dashValue)
     {
         // if (isAiming == true)
@@ -116,7 +116,7 @@ public class CowboyCharacterController : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
-    public void OnFire(InputValue fireValue)
+  /*  public void OnFire(InputValue fireValue)
     {
         if (isAiming == true) //checking that the player is aiming to attack
         {
@@ -129,7 +129,7 @@ public class CowboyCharacterController : MonoBehaviour
             }
             else attacking = false;
         }
-    }
+    }*/
     public void OnParry(InputValue parryValue)
     {
         isParrying = true;
@@ -140,7 +140,7 @@ public class CowboyCharacterController : MonoBehaviour
         weapon = myWeapons;
         //projectile = myWeapons.bullet1;
     }
-    IEnumerator Shoot()
+  /*  IEnumerator Shoot()
     {
         if (isAiming == true && isDashing == false) //makes it so the player only can attack when aim is held down &  when not dashing
         {
@@ -151,7 +151,7 @@ public class CowboyCharacterController : MonoBehaviour
             attackRdy = true;
         }
 
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
