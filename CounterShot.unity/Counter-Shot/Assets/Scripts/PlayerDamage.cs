@@ -22,7 +22,7 @@ public class PlayerDamage : MonoBehaviour
     }
 
 
-//something that checks what weapon player has & how much damage it does 
+    //something that checks what weapon player has & how much damage it does 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,4 +33,5 @@ public class PlayerDamage : MonoBehaviour
             if (destroyOnContact) Destroy(gameObject);
         }
     }
+   
 }

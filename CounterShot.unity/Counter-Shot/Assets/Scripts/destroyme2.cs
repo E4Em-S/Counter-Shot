@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class destroyme2 : MonoBehaviour
 {
+    public GameObject enemyHealthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class destroyme2 : MonoBehaviour
     }
     public void Destroy()
     {
-         Destroy(gameObject);
+        Destroy(gameObject);
     }
+   
 }

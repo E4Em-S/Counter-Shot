@@ -54,7 +54,7 @@ public class ShootScript : MonoBehaviour
     }
     public void OnFire(InputValue fireValue)
     {
-        Debug.Log("firing");
+        //Debug.Log("firing");
         if (isAiming == true) //checking that the player is aiming to attack
         {
 
