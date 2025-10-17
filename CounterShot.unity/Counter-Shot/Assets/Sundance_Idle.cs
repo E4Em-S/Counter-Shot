@@ -15,7 +15,7 @@ public class Sundance_Idle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("poopy");
+        
         animator.SetTrigger("Attack1");
     }
 
