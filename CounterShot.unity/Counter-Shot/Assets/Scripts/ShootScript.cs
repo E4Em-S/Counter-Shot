@@ -7,8 +7,9 @@ using TMPro;
 
 public class ShootScript : MonoBehaviour
 {
+    public WeaponScript weaponManager;
     public DiffWeaponsSO weaponData;
-     //aiming
+    //aiming
     Vector2 lookDir;
     [SerializeField] Transform gunBaseTransform;
     [SerializeField] Transform gunImageTransform;
@@ -23,11 +24,13 @@ public class ShootScript : MonoBehaviour
     bool isAiming;
     bool isDashing;
     public TextMeshProUGUI ammoCounter;
-
+    [Header("Shotgun")]
+    public float spreadAngle = 15f;
+    public float shotgunSpeed;
 
     public void Update()
     {
-         ammoCounter.text = "Ammo: " + ammo;
+        ammoCounter.text = "Ammo: " + ammo;
         if (ammo < 0)
         {
             ammo = 0;
@@ -70,13 +73,59 @@ public class ShootScript : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        if (isAiming == true && isDashing == false) //makes it so the player only can attack when aim is held down &  when not dashing
+           if (isAiming == true && isDashing == false) //makes it so the player only can attack when aim is held down &  when not dashing
         {
-            attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
-            attackTemp.BroadcastMessage("SetDirection", lookDir);
-            attackRdy = false;
-            yield return new WaitForSeconds(attackRate);
-            attackRdy = true;
+            if (weaponManager.currentWeaponIndex == 0) //pistol shooting
+            {
+                attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                attackTemp.BroadcastMessage("SetDirection", lookDir);
+                attackRdy = false;
+                yield return new WaitForSeconds(attackRate);
+                attackRdy = true;
+            }
+             if(weaponManager.currentWeaponIndex == 1) //shotgun shooting
+            {
+                Debug.Log("Shotgun Shot");
+                for (int i = 0; i < 3; i++)
+                {
+                    Vector3 spreadDirection = gunImageTransform.forward;
+                    float randomAngleX = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
+                    float randomAngleY = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
+                    spreadDirection = Quaternion.Euler(randomAngleX, randomAngleY, 0) * spreadDirection;
+                    attackTemp = Instantiate(projectile, gunImageTransform.position, gunImageTransform.rotation);
+                   // attackTemp.BroadcastMessage("SetDirection", lookDir);
+
+                    Rigidbody2D rb = attackTemp.GetComponent<Rigidbody2D>();
+                    rb.AddForce(spreadDirection.normalized * shotgunSpeed, ForceMode2D.Impulse);
+
+                }
+                
+                /*  for (int i = 0; i <= 2; i++)
+                  {
+                      switch (i)
+                      {
+                          case 0:
+                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                              break;
+                          case 1:
+                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                              attackTemp.BroadcastMessage("SetDirection", lookDir);
+                              break;
+                          case 2:
+                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                              attackTemp.BroadcastMessage("SetDirection", lookDir);
+                              break;
+                      }
+                      attackRdy = false;
+                      yield return new WaitForSeconds(attackRate);
+                      attackRdy = true;
+
+
+                  }
+              }
+
+          }*/
+            }
         }
     }
 }
