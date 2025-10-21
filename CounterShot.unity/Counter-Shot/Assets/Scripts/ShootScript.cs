@@ -17,6 +17,7 @@ public class ShootScript : MonoBehaviour
     [Header("attacking")]
     [SerializeField] float attackRate;
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject shotgunBullet;
     GameObject attackTemp;
     bool attacking = false;
     bool attackRdy = true;
@@ -25,7 +26,7 @@ public class ShootScript : MonoBehaviour
     bool isDashing;
     public TextMeshProUGUI ammoCounter;
     [Header("Shotgun")]
-    public float spreadAngle = 15f;
+    public float spreadAngle = 5f;
     public float shotgunSpeed;
 
     public void Update()
@@ -85,8 +86,8 @@ public class ShootScript : MonoBehaviour
             }
              if(weaponManager.currentWeaponIndex == 1) //shotgun shooting
             {
-                Debug.Log("Shotgun Shot");
-                for (int i = 0; i < 3; i++)
+                //Debug.Log("Shotgun Shot");
+               /* for (int i = 0; i < 3; i++)
                 {
                     Vector3 spreadDirection = gunImageTransform.forward;
                     float randomAngleX = Random.Range(-spreadAngle / 2f, spreadAngle / 2f);
@@ -98,22 +99,36 @@ public class ShootScript : MonoBehaviour
                     Rigidbody2D rb = attackTemp.GetComponent<Rigidbody2D>();
                     rb.AddForce(spreadDirection.normalized * shotgunSpeed, ForceMode2D.Impulse);
 
-                }
+                }*/
                 
-                /*  for (int i = 0; i <= 2; i++)
+                  for (int i = 0; i <= 2; i++)
                   {
                       switch (i)
                       {
-                          case 0:
-                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                        case 0:
+                          attackTemp = Instantiate(shotgunBullet, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                            attackTemp.BroadcastMessage("SetDirection", lookDir);
+                            Vector3 dir1 = transform.forward + new Vector3(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle));
+                            attackTemp.GetComponent<Rigidbody2D>().AddForce(dir1 * shotgunSpeed);
+                            //attackTemp.transform.Rotate(90, 0, 0);
+                            //zxy
+
                               break;
                           case 1:
-                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
-                              attackTemp.BroadcastMessage("SetDirection", lookDir);
+                              attackTemp = Instantiate(shotgunBullet, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                            attackTemp.BroadcastMessage("SetDirection", lookDir);
+                            Vector3 dir2 = transform.forward + new Vector3(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle));
+                            attackTemp.GetComponent<Rigidbody2D>().AddForce(dir2 * shotgunSpeed);
+                            //attackTemp.transform.Rotate(45, 0, 0);
+                              
                               break;
                           case 2:
-                              attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
-                              attackTemp.BroadcastMessage("SetDirection", lookDir);
+                              attackTemp = Instantiate(shotgunBullet, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                            attackTemp.BroadcastMessage("SetDirection", lookDir);
+                            Vector3 dir3 = transform.forward + new Vector3(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle));
+                            attackTemp.GetComponent<Rigidbody2D>().AddForce(dir3 * shotgunSpeed);
+                            //attackTemp.transform.Rotate(-45, 0, 0);
+                              //attackTemp.transform.Rotate(Vector3.up * (Random.Range(-spreadAngle / 2f, spreadAngle / 2f)));
                               break;
                       }
                       attackRdy = false;
@@ -124,8 +139,8 @@ public class ShootScript : MonoBehaviour
                   }
               }
 
-          }*/
+          }
             }
         }
-    }
-}
+    
+

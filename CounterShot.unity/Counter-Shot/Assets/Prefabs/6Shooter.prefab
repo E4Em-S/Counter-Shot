@@ -97,10 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0d88bab1e9eb7438e4e4838fb916bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 36ff3ef030b90d344bf679e37ba04035, type: 2}
   gunBaseTransform: {fileID: 0}
   gunImageTransform: {fileID: 2233221381189019570}
   attackRate: 0
-  projectile: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
-  ammo: 6
+  projectile: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
+  ammo: 3
   ammoCounter: {fileID: 0}
+  spreadAngle: 15
+  shotgunSpeed: 0

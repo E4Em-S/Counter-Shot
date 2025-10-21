@@ -1642,6 +1642,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2119861238}
     - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: spreadAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: shotgunSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: shotgunBullet
+      value: 
+      objectReference: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
+    - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 290369425}
@@ -1714,6 +1726,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: spreadAngle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: shotgunSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: shotgunBullet
+      value: 
+      objectReference: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 290369425}
@@ -1760,11 +1788,19 @@ PrefabInstance:
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
+      objectReference: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
+    - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: spreadAngle
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunSpeed
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: shotgunBullet
+      value: 
+      objectReference: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: weaponManager
       value: 
