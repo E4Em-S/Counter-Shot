@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private CowboyCharacterController cowboyCharacterControllerRef;
+    [SerializeField] private CowboyCharacterController cowboyCharacterControllerRef;
     [SerializeField] Collider2D playerHitbox;
     public int playerHealth = 3;
     public TextMeshProUGUI healthUI;
@@ -30,9 +30,11 @@ public class PlayerHealth : MonoBehaviour
         
         if (other.tag == "EnemyProjectile" || other.tag == "Parryable")
         {
+            if (cowboyCharacterControllerRef.isDashing == true)//check if dashing
+                return;
             playerHealth--;
             StartCoroutine(FlashRed());
-            //Debug.Log("Took damage from: " + other.gameObject);
+            Debug.Log("Took damage from: " + other.gameObject);
         }
     }
     private void Update()

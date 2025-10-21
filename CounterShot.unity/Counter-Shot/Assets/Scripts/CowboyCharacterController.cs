@@ -20,13 +20,6 @@ public class CowboyCharacterController : MonoBehaviour
     Vector2 lookDir;
     [SerializeField] Transform gunBaseTransform;
     [SerializeField] Transform gunImageTransform;
-
-    [Header("attacking")]
-    [SerializeField] float attackRate;
-    [SerializeField] GameObject projectile;
-    GameObject attackTemp;
-    bool attacking = false;
-    bool attackRdy = true;
     public int ammo = 0;
 
     [Header("parrying")]
@@ -39,7 +32,7 @@ public class CowboyCharacterController : MonoBehaviour
     public int playerHealth = 3;
 
     [Header("Dash")]
-    bool isDashing;
+    public bool isDashing;
     bool canDash;
     [SerializeField] float dashSpeed = 10f;
     [SerializeField] float dashDur = 1f;

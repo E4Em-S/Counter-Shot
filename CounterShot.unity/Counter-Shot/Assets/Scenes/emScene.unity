@@ -1023,6 +1023,17 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1196393157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5350383095976655681, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+  m_PrefabInstance: {fileID: 4434400894776330735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136711816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8063f0bbc00aa704bb0ced40210587ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260480595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3804054862587850036, guid: aa9d85aa064e52744af204da9ba59982, type: 3}
@@ -1647,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunSpeed
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 353947055206942490, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunBullet
@@ -1726,6 +1737,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: ammo
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: attackRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
@@ -1735,7 +1754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunSpeed
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunBullet
@@ -1773,6 +1792,10 @@ PrefabInstance:
       propertyPath: playerRenderer
       value: 
       objectReference: {fileID: 1196393145}
+    - target: {fileID: 5826481825262340271, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: cowboyCharacterControllerRef
+      value: 
+      objectReference: {fileID: 1196393157}
     - target: {fileID: 6629830673468361233, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_LinearDrag
       value: 0
@@ -1786,6 +1809,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: attackRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 6377873509667444538, guid: cfdc03106e67f844997c7ac1d634061a, type: 3}
@@ -1795,7 +1822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunSpeed
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7466815922852418298, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: shotgunBullet

@@ -7,7 +7,9 @@ using TMPro;
 
 public class ShootScript : MonoBehaviour
 {
-    public WeaponScript weaponManager;
+
+    [SerializeField] private CowboyCharacterController cowboyCharacterControllerRef;
+    public WeaponChanger weaponManager;
     public DiffWeaponsSO weaponData;
     //aiming
     Vector2 lookDir;
@@ -78,7 +80,7 @@ public class ShootScript : MonoBehaviour
         {
             if (weaponManager.currentWeaponIndex == 0) //pistol shooting
             {
-                attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
+                attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.identity); //Quaternion.identity no rot
                 attackTemp.BroadcastMessage("SetDirection", lookDir);
                 attackRdy = false;
                 yield return new WaitForSeconds(attackRate);

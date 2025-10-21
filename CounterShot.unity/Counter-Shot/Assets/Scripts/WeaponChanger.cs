@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-public class WeaponScript : MonoBehaviour
+public class WeaponChanger : MonoBehaviour
 {
     int totalWeapons;
 
@@ -46,7 +46,8 @@ public class WeaponScript : MonoBehaviour
             currentGun = guns[currentWeaponIndex];
              if(currentWeaponIndex >= 2)
         {
-            currentWeaponIndex = 0; 
+                currentWeaponIndex = 0;
+                guns[currentWeaponIndex].SetActive(true); 
         }
         }
        
