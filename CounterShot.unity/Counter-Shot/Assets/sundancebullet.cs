@@ -22,7 +22,7 @@ public class sundancebullet : MonoBehaviour
     }
     IEnumerator Destroyself()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spinninggun : MonoBehaviour
 {
-    public float rotationspeed;
+    [SerializeField] float rotationspeed;
     public GameObject Bullet;
 
     Transform Spawnpoint;
@@ -13,17 +13,31 @@ public class spinninggun : MonoBehaviour
     void Start()
     {
         Spawnpoint = transform.Find("Bulletspawn");
-        Debug.Log(Spawnpoint);
+      
+        firebullet();
+        
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void firebullet()
     {
+        Instantiate(Bullet, Spawnpoint.transform.position, transform.rotation);
+        StartCoroutine(waittforbullet());
 
     }
-public void firebullet()
+     void Update()
     {
-        Instantiate(Bullet, Spawnpoint.position, Spawnpoint.rotation);
+        Debug.Log("d");
+        transform.Rotate(0, 0, rotationspeed * Time.deltaTime);
     }
-   
+
+    IEnumerator waittforbullet()
+{
+    yield return new WaitForSeconds(.5f);
+        firebullet();
 }
+}
+
+
+
