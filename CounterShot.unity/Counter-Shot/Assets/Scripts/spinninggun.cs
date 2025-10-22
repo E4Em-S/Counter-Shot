@@ -28,7 +28,6 @@ public class spinninggun : MonoBehaviour
     }
      void Update()
     {
-        Debug.Log("d");
         transform.Rotate(0, 0, rotationspeed * Time.deltaTime);
     }
 
