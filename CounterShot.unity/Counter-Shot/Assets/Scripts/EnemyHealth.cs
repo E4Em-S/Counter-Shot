@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int currentHealth;
+    [SerializeField] float currentHealth;
     [SerializeField] int maxHealth;
     // Start is called before the first frame update
 

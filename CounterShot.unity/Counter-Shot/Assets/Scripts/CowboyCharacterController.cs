@@ -89,19 +89,7 @@ public class CowboyCharacterController : MonoBehaviour
             movementInput = value.Get<Vector2>();
         }
     }
-   /* public void OnLook(InputValue lookValue)
-    {
-        isAiming = true;
-        lookDir = lookValue.Get<Vector2>().normalized;
-        if (Mathf.Abs(lookDir.magnitude) > 0)
-        {
-            gunBaseTransform.up = lookDir;
-        }
-        if (lookValue.Get<Vector2>() == Vector2.zero) //when there is no more input from right stick (zero vector 2) 
-        {
-            isAiming = false;
-        }
-    }*/
+
     public void OnDash(InputValue dashValue)
     {
         // if (isAiming == true)
@@ -109,20 +97,7 @@ public class CowboyCharacterController : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
-  /*  public void OnFire(InputValue fireValue)
-    {
-        if (isAiming == true) //checking that the player is aiming to attack
-        {
-
-            attacking = true;
-            if (attackRdy && ammo > 0)
-            {
-                ammo--;
-                StartCoroutine(Shoot());
-            }
-            else attacking = false;
-        }
-    }*/
+  
     public void OnParry(InputValue parryValue)
     {
         isParrying = true;
@@ -133,18 +108,6 @@ public class CowboyCharacterController : MonoBehaviour
         weapon = myWeapons;
         //projectile = myWeapons.bullet1;
     }
-  /*  IEnumerator Shoot()
-    {
-        if (isAiming == true && isDashing == false) //makes it so the player only can attack when aim is held down &  when not dashing
-        {
-            attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
-            attackTemp.BroadcastMessage("SetDirection", lookDir);
-            attackRdy = false;
-            yield return new WaitForSeconds(attackRate);
-            attackRdy = true;
-        }
-
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

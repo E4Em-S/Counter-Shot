@@ -1668,6 +1668,18 @@ PrefabInstance:
       propertyPath: weaponManager
       value: 
       objectReference: {fileID: 290369425}
+    - target: {fileID: 1052178823902066015, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052178823902066015, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 77dfc992cdbf43e489d693161a47fbe9, type: 3}
+    - target: {fileID: 1052178823902066015, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2056215509670440807, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.022000074
@@ -1736,6 +1748,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4325530855915612266, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325530855915612266, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325530855915612266, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325530855915612266, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325530855915612266, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5139577789706441796, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: ammo
       value: 6
@@ -1788,6 +1820,10 @@ PrefabInstance:
       propertyPath: gunImageTransform
       value: 
       objectReference: {fileID: 1879206073}
+    - target: {fileID: 5682710648073953323, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5826481825262340271, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: playerRenderer
       value: 
@@ -1835,6 +1871,10 @@ PrefabInstance:
     - target: {fileID: 7834146988894735158, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_TagString
       value: parryCircle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7931134129887700629, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

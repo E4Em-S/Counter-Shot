@@ -30,6 +30,7 @@ public class PlayerDamage : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().AddDamage(damage);
             collision.gameObject.GetComponent<EnemyHealthBar>().UpdateHealthBar(damage);
+            Debug.Log("Doing: " + Mathf.RoundToInt(damage) + "damage");
             if (destroyOnContact) Destroy(gameObject);
         }
     }

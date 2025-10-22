@@ -46,6 +46,8 @@ public class WeaponChanger : MonoBehaviour
             currentGun = guns[currentWeaponIndex];
              if(currentWeaponIndex >= 2)
         {
+                guns[currentWeaponIndex].SetActive(false);
+
                 currentWeaponIndex = 0;
                 guns[currentWeaponIndex].SetActive(true); 
         }

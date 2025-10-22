@@ -12,7 +12,7 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] public GameObject enemyHealthBar;
     public bool isVisible;
     int ogLayoutLength;
-    public void UpdateHealthBar(int dam)
+    public void UpdateHealthBar(float dam)
     {
         enemyHealthBar.gameObject.SetActive(true);
 
