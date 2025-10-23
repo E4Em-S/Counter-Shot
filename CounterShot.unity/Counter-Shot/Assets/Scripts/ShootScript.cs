@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class ShootScript : MonoBehaviour
@@ -24,7 +25,7 @@ public class ShootScript : MonoBehaviour
     bool attacking = false;
     bool attackRdy = true;
 
-    public int pistolAmmo;
+    [SerializeField] int pistolAmmo;
     bool isAiming;
     bool isDashing;
     [Header("Shotgun")]
@@ -36,14 +37,7 @@ public class ShootScript : MonoBehaviour
 
     public void Update()
     {
-        if (weaponManager.currentWeaponIndex == 0)
-        {
-            ammoCounter.text = "Ammo(pistol): " + pistolAmmo;
-        }
-        else if(weaponManager.currentWeaponIndex == 1)
-        {
-            ammoCounter.text = "Ammo(shotgun): " + shotgunAmmo;
-        }
+        UpdateAmmoDisplay();
         
         if (pistolAmmo < 0 || shotgunAmmo < 0)
         {
@@ -89,14 +83,23 @@ public class ShootScript : MonoBehaviour
     }
     public void UpdateAmmo()
     {
+        Debug.Log("adding ammo from parry");
         if (weaponManager.currentWeaponIndex == 0)
         {
             pistolAmmo++;
         }
-        if(weaponManager.currentWeaponIndex == 1)
+        if (weaponManager.currentWeaponIndex == 1)
         {
             shotgunAmmo++;
         }
+        UpdateAmmoDisplay();
+    }
+    void UpdateAmmoDisplay()
+    {
+         if (weaponManager.currentWeaponIndex == 0)
+        ammoCounter.text = "Ammo (pistol): " + pistolAmmo;
+    else if (weaponManager.currentWeaponIndex == 1)
+        ammoCounter.text = "Ammo (shotgun): " + shotgunAmmo;
     }
 
     IEnumerator Shoot()
@@ -105,7 +108,6 @@ public class ShootScript : MonoBehaviour
         {
             if (weaponManager.currentWeaponIndex == 0) //pistol shooting
             {
-                //ammo--;
                 attackTemp = Instantiate(projectile, gunImageTransform.position, Quaternion.identity); //Quaternion.identity no rot
                 attackTemp.BroadcastMessage("SetDirection", lookDir);
                 attackRdy = false;
@@ -114,12 +116,10 @@ public class ShootScript : MonoBehaviour
             }
              if(weaponManager.currentWeaponIndex == 1) //shotgun shooting
             {
-                //ammo--;
                 for (int i = 0; i <= 4; i++)
                 {
                     switch (i)
                     {
-                        
                         case 0:
                             attackTemp = Instantiate(shotgunBullet, gunImageTransform.position, Quaternion.LookRotation(lookDir)); //Quaternion.identity no rot
                             attackTemp.BroadcastMessage("SetDirection", lookDir);
@@ -154,10 +154,8 @@ public class ShootScript : MonoBehaviour
                     attackRdy = false;
                     attackRdy = true;
                 }
-                                    yield return new WaitForSeconds(shotgunAttackRate);
-
-
-              }
+                yield return new WaitForSeconds(shotgunAttackRate);
+            }
 
           }
             }
