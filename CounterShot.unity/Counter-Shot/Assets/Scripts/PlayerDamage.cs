@@ -16,7 +16,7 @@ public class PlayerDamage : MonoBehaviour
     }
     public void SetDirection(Vector2 myDir)
     {
-        transform.up = myDir;
+        transform.right = myDir;
         if (rb != null)
             rb.velocity = myDir.normalized * bulletSpeed;
     }
@@ -30,7 +30,7 @@ public class PlayerDamage : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().AddDamage(damage);
             collision.gameObject.GetComponent<EnemyHealthBar>().UpdateHealthBar(damage);
-            Debug.Log("Doing: " + Mathf.RoundToInt(damage) + "damage");
+            //Debug.Log("Doing: " + Mathf.RoundToInt(damage) + "damage");
             if (destroyOnContact) Destroy(gameObject);
         }
     }
