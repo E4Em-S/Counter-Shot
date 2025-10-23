@@ -20,7 +20,6 @@ public class CowboyCharacterController : MonoBehaviour
     Vector2 lookDir;
     [SerializeField] Transform gunBaseTransform;
     [SerializeField] Transform gunImageTransform;
-    public int ammo = 0;
 
     [Header("parrying")]
     public bool isParrying = false;
@@ -39,12 +38,10 @@ public class CowboyCharacterController : MonoBehaviour
     [SerializeField] float dashCooldown = 1f;
 
     //UI
-    public TextMeshProUGUI ammoCounter;
+
 
     [Header("flashingColor")]
     public Renderer playerRenderer;
-    public Color flashColor = Color.yellow;
-    public float flashDur = 0.1f;
     private Color ogColor;
     public float freezeDur;
     bool isFrozen = false;
@@ -67,16 +64,6 @@ public class CowboyCharacterController : MonoBehaviour
         ogColor = playerRenderer.material.color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        ammoCounter.text = "Ammo: " + ammo;
-        if (ammo < 0)
-        {
-            ammo = 0;
-            //add some juice to encourage parrying here
-        }
-    }
     private void FixedUpdate()
     {
         rb.velocity = movementInput * moveSpeed;
@@ -92,7 +79,6 @@ public class CowboyCharacterController : MonoBehaviour
 
     public void OnDash(InputValue dashValue)
     {
-        // if (isAiming == true)
         {
             StartCoroutine(Dash());
         }
@@ -116,14 +102,10 @@ public class CowboyCharacterController : MonoBehaviour
             if (collision.tag == "Parryable")
             {
                 StartCoroutine(DoFreeze());
-                ammo++;
+                GetComponent<ShootScript>().UpdateAmmo();
                 //Debug.Log("parry collision w: " + collision.gameObject);
 
             }//come up with full ammo system when doing other weapons and change this bullshit
-            if (ammo > 6)
-            {
-                ammo = 6;
-            }
         }
     }
 
@@ -147,15 +129,9 @@ public class CowboyCharacterController : MonoBehaviour
     }
     private IEnumerator Dash()
     {
-        //attackTemp.BroadcastMessage("SetDirection", lookDir);
-
-
         canDash = false;
         isDashing = true;
-       // movementInput = new Vector2(lookDir.x * dashSpeed, lookDir.y * dashSpeed);
         movementInput = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
-       // rb.velocity = new Vector2(movementInput.x * dashSpeed, movementInput.y * dashSpeed);
-        // rb.velocity = new Vector2(lookDir.x * dashSpeed, lookDir.y * dashSpeed);
         yield return new WaitForSeconds(dashDur);
         isDashing = false;
 

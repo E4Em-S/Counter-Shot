@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
                 return;
             playerHealth--;
             StartCoroutine(FlashRed());
-            Debug.Log("Took damage from: " + other.gameObject);
+            //Debug.Log("Took damage from: " + other.gameObject);
         }
     }
     private void Update()
