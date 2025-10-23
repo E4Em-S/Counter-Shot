@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class CowboyCharacterController : MonoBehaviour
 {
     DiffWeaponsSO weapon;
+    [SerializeField] private ShootScript shootScript;
     //movement
     [SerializeField] private Rigidbody2D rb;
     private Vector2 movementInput;

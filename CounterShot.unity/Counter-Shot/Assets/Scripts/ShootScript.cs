@@ -37,7 +37,7 @@ public class ShootScript : MonoBehaviour
 
     public void Update()
     {
-        UpdateAmmoDisplay();
+        //UpdateAmmoDisplay();
         
         if (pistolAmmo < 0 || shotgunAmmo < 0)
         {
@@ -57,6 +57,10 @@ public class ShootScript : MonoBehaviour
             isAiming = false;
         }
     }
+    void OnChangeWeapons(InputValue inputval)
+    {
+        UpdateAmmoDisplay();
+    }
     public void SetWeaponSO(DiffWeaponsSO myWeapons)
     {
         //weapon = myWeapons;
@@ -73,33 +77,41 @@ public class ShootScript : MonoBehaviour
                 pistolAmmo--;
                 StartCoroutine(Shoot());
             }
-            else if(weaponManager.currentWeaponIndex == 1 && attackRdy && shotgunAmmo > 0)
+            else if (weaponManager.currentWeaponIndex == 1 && attackRdy && shotgunAmmo > 0)
             {
                 shotgunAmmo--;
                 StartCoroutine(Shoot());
             }
             else attacking = false;
+            UpdateAmmoDisplay();
         }
     }
     public void UpdateAmmo()
     {
-        Debug.Log("adding ammo from parry");
-        if (weaponManager.currentWeaponIndex == 0)
+       switch (weaponManager.currentWeaponIndex)
         {
-            pistolAmmo++;
-        }
-        if (weaponManager.currentWeaponIndex == 1)
-        {
-            shotgunAmmo++;
-        }
+            case 0:
+                if (pistolAmmo >= 6) break;
+                pistolAmmo++;
+            break;
+            case 1:
+                if (shotgunAmmo >= 4) break;
+                shotgunAmmo++;
+            break;
+        }     
         UpdateAmmoDisplay();
     }
     void UpdateAmmoDisplay()
     {
-         if (weaponManager.currentWeaponIndex == 0)
-        ammoCounter.text = "Ammo (pistol): " + pistolAmmo;
-    else if (weaponManager.currentWeaponIndex == 1)
-        ammoCounter.text = "Ammo (shotgun): " + shotgunAmmo;
+        switch (weaponManager.currentWeaponIndex)
+        {
+            case 0:
+                ammoCounter.text = "Ammo (pistol): " + pistolAmmo;
+                break;
+            case 1:
+                ammoCounter.text = "Ammo (shotgun): " + shotgunAmmo;
+                break;
+        }     
     }
 
     IEnumerator Shoot()
