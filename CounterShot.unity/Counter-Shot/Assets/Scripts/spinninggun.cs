@@ -33,7 +33,7 @@ public class spinninggun : MonoBehaviour
 
     IEnumerator waittforbullet()
 {
-    yield return new WaitForSeconds(.5f);
+    yield return new WaitForSeconds(.3f);
         firebullet();
 }
 }
