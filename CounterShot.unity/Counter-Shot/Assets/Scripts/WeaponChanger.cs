@@ -14,6 +14,10 @@ public class WeaponChanger : MonoBehaviour
     public GameObject[] guns;
     public GameObject weaponHolder;
     public GameObject currentGun;
+    [Header("UI")]
+    [SerializeField] GameObject pistolAmmoUI;
+    [SerializeField] GameObject shotgunAmmoUI;
+
     // Start is called before the first frame update
     void Start()
     {

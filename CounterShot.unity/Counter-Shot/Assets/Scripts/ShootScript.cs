@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 
 public class ShootScript : MonoBehaviour
@@ -18,8 +19,11 @@ public class ShootScript : MonoBehaviour
     [SerializeField] Transform gunImageTransform;
 
     [Header("pistol")]
+    [SerializeField] Animator reloadPistol;
     [SerializeField] float pistolattackRate;
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject pistolAmmoUI;
+    int bulletspistol;
 
     GameObject attackTemp;
     bool attacking = false;
@@ -29,11 +33,13 @@ public class ShootScript : MonoBehaviour
     bool isAiming;
     bool isDashing;
     [Header("Shotgun")]
+     [SerializeField] GameObject shotgunAmmountUI;
     [SerializeField] GameObject shotgunBullet;
     public float spreadAngle = 5f;
     public float shotgunSpeed;
     public int shotgunAmmo;
     public float shotgunAttackRate;
+    int bulletsShotgun;
 
     public void Update()
     {
@@ -74,11 +80,13 @@ public class ShootScript : MonoBehaviour
             attacking = true;
             if (weaponManager.currentWeaponIndex == 0 && attackRdy && pistolAmmo > 0)
             {
+                RemoveBulletPistolUI();
                 pistolAmmo--;
                 StartCoroutine(Shoot());
             }
             else if (weaponManager.currentWeaponIndex == 1 && attackRdy && shotgunAmmo > 0)
             {
+                RemoveBulletShotgunUI();
                 shotgunAmmo--;
                 StartCoroutine(Shoot());
             }
@@ -93,9 +101,12 @@ public class ShootScript : MonoBehaviour
             case 0:
                 if (pistolAmmo >= 6) break;
                 pistolAmmo++;
+                 //reloadPistol.SetTrigger("Spin");
+                AddBulletPistolUI();
             break;
             case 1:
                 if (shotgunAmmo >= 4) break;
+                AddShotgunBulletUI();
                 shotgunAmmo++;
             break;
         }     
@@ -106,12 +117,75 @@ public class ShootScript : MonoBehaviour
         switch (weaponManager.currentWeaponIndex)
         {
             case 0:
+                pistolAmmoUI.SetActive(true);
+                shotgunAmmountUI.SetActive(false);
                 ammoCounter.text = "Ammo (pistol): " + pistolAmmo;
                 break;
             case 1:
+                pistolAmmoUI.SetActive(false);
+                shotgunAmmountUI.SetActive(true);
                 ammoCounter.text = "Ammo (shotgun): " + shotgunAmmo;
                 break;
-        }     
+        }
+    }
+    public void RemoveBulletPistolUI()
+    {
+       
+        bulletspistol = pistolAmmoUI.transform.childCount;
+        for (int i = bulletspistol - 1; i >= 0 - 1; i--)
+        {
+            GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
+            Debug.Log(i);
+            if (bullet.activeSelf)
+            {
+                bullet.SetActive(false);
+                break;
+            }
+        }
+    }
+    public void AddBulletPistolUI()
+    {
+        //pistolAmmoUI.BroadcastMessage("onRotate");
+        bulletspistol = pistolAmmoUI.transform.childCount;
+        for (int i = bulletspistol - 1; i >= 0 - 1; i--)
+        {
+            GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
+            Debug.Log(i);
+            if (!bullet.activeSelf)
+            {
+                bullet.SetActive(true);
+                break;
+            }
+        }
+    }
+    public void AddShotgunBulletUI()
+    {
+        bulletsShotgun = shotgunAmmountUI.transform.childCount;
+        for (int i = bulletsShotgun - 1; i >= 0 - 1; i--)
+        {
+            GameObject bullet = shotgunAmmountUI.transform.GetChild(i).gameObject;
+            Debug.Log(i);
+            if (!bullet.activeSelf)
+            {
+                bullet.SetActive(true);
+                break;
+            }
+        }
+    }
+    public void RemoveBulletShotgunUI()
+    {
+       
+        bulletsShotgun = shotgunAmmountUI.transform.childCount;
+        for (int i = bulletsShotgun - 1; i >= 0 - 1; i--)
+        {
+            GameObject bullet = shotgunAmmountUI.transform.GetChild(i).gameObject;
+            Debug.Log(i);
+            if (bullet.activeSelf)
+            {
+                bullet.SetActive(false);
+                break;
+            }
+        }
     }
 
     IEnumerator Shoot()

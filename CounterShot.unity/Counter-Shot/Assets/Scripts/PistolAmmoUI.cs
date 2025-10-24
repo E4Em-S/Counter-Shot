@@ -17,7 +17,7 @@ public class PistolAmmoUI : MonoBehaviour
         bullets = pistolAmmo.transform.childCount;
         for (int i = bullets - 1; i >= bullets - 1; i--)
         {
-            
+            pistolAmmo.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 }
