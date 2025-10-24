@@ -23,7 +23,7 @@ public class spinningBullet : MonoBehaviour
     }
     IEnumerator Destroyself()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         Destroy(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)

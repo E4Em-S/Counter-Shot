@@ -109,7 +109,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -297564654287376288}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5879736236446099572}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -304,6 +305,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &5879736236446099572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01ad49dffa106e4a8806f5f95acfc5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spingun: {fileID: 6979138980595870279, guid: 4be8c4927456fe0409fe032ed716d542, type: 3}
+  gunspawn: {fileID: 0}
 --- !u!114 &7088043565656958616
 MonoBehaviour:
   m_ObjectHideFlags: 1
