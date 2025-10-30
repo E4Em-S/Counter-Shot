@@ -29,7 +29,7 @@ public class Sundance : MonoBehaviour
         if(parrychance == 3 || parrychance == 4)
         { 
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
-            sprite.color = new UnityEngine.Color(1f, 0.75f, 0.8f);
+            sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
             spawnedbullet.tag = "Parryable";
             spawnedbullet.AddComponent<Parryablebullet>();
         }

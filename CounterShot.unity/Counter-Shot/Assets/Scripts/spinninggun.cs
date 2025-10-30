@@ -28,7 +28,7 @@ public class spinninggun : MonoBehaviour
         if(parrychance == 3 || parrychance == 4)
         { 
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
-            sprite.color = new UnityEngine.Color(1f, 0.75f, 0.8f);
+            sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
             spawnedbullet.tag = "Parryable";
             spawnedbullet.AddComponent<Parryablebullet>(); //adds parryable bullet script to the obj
         }
@@ -43,7 +43,7 @@ public class spinninggun : MonoBehaviour
 
     IEnumerator waittforbullet()
 {
-    yield return new WaitForSeconds(.3f);
+    yield return new WaitForSeconds(.5f);
         firebullet();
 }
 }

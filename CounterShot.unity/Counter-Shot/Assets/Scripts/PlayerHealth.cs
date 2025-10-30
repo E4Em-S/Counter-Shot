@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other) //checking for damage to player specifically
     {
         
-        if (other.tag == "EnemyProjectile" || other.tag == "Parryable")
+        if (other.tag == "EnemyProjectile" || other.tag == "Parryable" || other.tag == "Horse")
         {
             if (cowboyCharacterControllerRef.isDashing == true)//check if dashing
                 return;

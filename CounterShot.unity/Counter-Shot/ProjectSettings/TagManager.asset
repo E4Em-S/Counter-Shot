@@ -9,6 +9,7 @@ TagManager:
   - parryCircle
   - playerBullet
   - Enemy
+  - Horse
   layers:
   - Default
   - TransparentFX
