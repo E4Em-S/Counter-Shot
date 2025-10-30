@@ -6,6 +6,7 @@ public class spinninggun : MonoBehaviour
 {
     [SerializeField] float rotationspeed;
     public GameObject Bullet;
+    int parrychance;
 
     Transform Spawnpoint;
 
@@ -22,7 +23,15 @@ public class spinninggun : MonoBehaviour
 
     public void firebullet()
     {
-        Instantiate(Bullet, Spawnpoint.transform.position, transform.rotation);
+        parrychance = Random.Range(0, 5);
+        GameObject spawnedbullet = Instantiate(Bullet, Spawnpoint.position, Spawnpoint.rotation);
+        if(parrychance == 3 || parrychance == 4)
+        { 
+             SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
+            sprite.color = new UnityEngine.Color(1f, 0.75f, 0.8f);
+            spawnedbullet.tag = "Parryable";
+        }
+       
         StartCoroutine(waittforbullet());
 
     }
@@ -33,7 +42,7 @@ public class spinninggun : MonoBehaviour
 
     IEnumerator waittforbullet()
 {
-    yield return new WaitForSeconds(.5f);
+    yield return new WaitForSeconds(.3f);
         firebullet();
 }
 }

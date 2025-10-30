@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4069818007636561200}
   - component: {fileID: 8744688691962373150}
   - component: {fileID: 6696872681035532123}
+  - component: {fileID: 5832329633717778108}
   m_Layer: 0
   m_Name: Spinninggun
   m_TagString: Untagged
@@ -120,8 +121,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19fe87766e81994099ce303d8519e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationspeed: 500
   Bullet: {fileID: 4025796234712710193, guid: 1b1ffc648eb5006418d4773b09530d1d, type: 3}
-  Spawnpoint: {fileID: 0}
+--- !u!114 &5832329633717778108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6979138980595870279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9258ac09ece1944794dfee6c80366d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
 --- !u!1 &7592335696498755126
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +145,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5867685049051906015}
-  - component: {fileID: 4101724030709465947}
   m_Layer: 0
   m_Name: Bulletspawn
   m_TagString: Untagged
@@ -154,24 +167,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7947235847149496445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4101724030709465947
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7592335696498755126}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fa7b5937c612e847b3af3517b745afc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

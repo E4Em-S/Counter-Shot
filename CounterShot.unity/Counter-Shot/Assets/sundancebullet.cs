@@ -10,7 +10,7 @@ public class sundancebullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.position * speed;
+        rb.velocity = -transform.up * speed;
 
         StartCoroutine(Destroyself());
     }
@@ -22,7 +22,7 @@ public class sundancebullet : MonoBehaviour
     }
     IEnumerator Destroyself()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         Destroy(gameObject);
     }
 }
