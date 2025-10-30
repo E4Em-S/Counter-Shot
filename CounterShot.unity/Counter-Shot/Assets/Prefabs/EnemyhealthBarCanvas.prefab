@@ -426,7 +426,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &634074751764017586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   layout: {fileID: 8587206639589637258}
   enemyHealthBar: {fileID: 3804054862587850036}
   isVisible: 0
+  accumulatedDam: 0
 --- !u!1 &6398155124862957259
 GameObject:
   m_ObjectHideFlags: 0

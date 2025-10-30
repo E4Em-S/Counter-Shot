@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  bulletSpeed: 15
+  bulletSpeed: 20
   destroyOnContact: 1
 --- !u!70 &1909705836626011126
 CapsuleCollider2D:

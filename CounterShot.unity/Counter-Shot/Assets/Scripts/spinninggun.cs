@@ -30,6 +30,7 @@ public class spinninggun : MonoBehaviour
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
             sprite.color = new UnityEngine.Color(1f, 0.75f, 0.8f);
             spawnedbullet.tag = "Parryable";
+            spawnedbullet.AddComponent<Parryablebullet>(); //adds parryable bullet script to the obj
         }
        
         StartCoroutine(waittforbullet());

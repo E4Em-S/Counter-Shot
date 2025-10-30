@@ -11,7 +11,7 @@ public class SceneSwitcher : MonoBehaviour
     }
     public void TrainingLevel()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
     // Start is called before the first frame update
     void Start()

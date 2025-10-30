@@ -31,6 +31,7 @@ public class Sundance : MonoBehaviour
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
             sprite.color = new UnityEngine.Color(1f, 0.75f, 0.8f);
             spawnedbullet.tag = "Parryable";
+            spawnedbullet.AddComponent<Parryablebullet>();
         }
        
     }

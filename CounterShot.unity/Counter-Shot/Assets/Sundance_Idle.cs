@@ -15,7 +15,7 @@ public class Sundance_Idle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
          chud = animator.GetComponent<chuddywaitforsec>();
-        Debug.Log(whichattack);
+        //Debug.Log(whichattack);
         chud.StartCoroutine(chud.waiting(() => TriggerAttack(animator)));
       
     }
@@ -36,7 +36,7 @@ public class Sundance_Idle : StateMachineBehaviour
     void TriggerAttack(Animator animator)
     {
         whichattack = Random.Range(0, 2);
-        Debug.Log(whichattack);
+        //Debug.Log(whichattack);
         if (attack1 == 2)
         {
             whichattack = 1;

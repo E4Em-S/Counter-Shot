@@ -135,7 +135,7 @@ public class ShootScript : MonoBehaviour
         for (int i = bulletspistol - 1; i >= 0 - 1; i--)
         {
             GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            //Debug.Log(i);
             if (bullet.activeSelf)
             {
                 bullet.SetActive(false);
@@ -150,7 +150,7 @@ public class ShootScript : MonoBehaviour
         for (int i = bulletspistol - 1; i >= 0 - 1; i--)
         {
             GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            //Debug.Log(i);
             if (!bullet.activeSelf)
             {
                 bullet.SetActive(true);
@@ -161,10 +161,13 @@ public class ShootScript : MonoBehaviour
     public void AddShotgunBulletUI()
     {
         bulletsShotgun = shotgunAmmountUI.transform.childCount;
-        for (int i = bulletsShotgun - 1; i >= 0 - 1; i--)
+        for (int i = bulletsShotgun - 1; i >= 0; i--)
         {
+            if (i > 1) 
+            break;
             GameObject bullet = shotgunAmmountUI.transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            //Debug.Log(i);
+            
             if (!bullet.activeSelf)
             {
                 bullet.SetActive(true);

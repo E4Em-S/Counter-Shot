@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: 73ff581dc3b91484db490e606108f9f2
   - enabled: 1
+    path: Assets/Scenes/SundanceFight.unity
+    guid: e228752c6eb73b64a80f671038183cf1
+  - enabled: 1
     path: Assets/Scenes/TrainingScene.unity
     guid: 5cd069094e20c3f47bbad2daff155130
   - enabled: 1
