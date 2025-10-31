@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 112
         width: 164
         height: 16
       alignment: 0
@@ -111,14 +111,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e477d4999f3fbe44285e471b197e2974
-      internalID: 1940357852
+      spriteID: 9fd7d41c96ecfa74799c1c41346e60df
+      internalID: -159706868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: TitleCard_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 64
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f4806f7f753094ea944b2941060c23
+      internalID: 1401657737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleCard_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 96
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7d9b8eb578dfb4882809cf4cdd4ea5
+      internalID: -1471416076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleCard_3
       rect:
         serializedVersion: 2
         x: 0
@@ -132,29 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea80efac872edcf4386768bd72805f5d
-      internalID: -1252953610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TitleCard_2
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 0
-        width: 96
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2dd1a9c5a061e754c80cde7d7b657106
-      internalID: -691692533
+      spriteID: 3704e7ad04ee11e4c884f40a9fe41eba
+      internalID: -179201662
       vertices: []
       indices: 
       edges: []
@@ -170,9 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TitleCard_0: 1940357852
-      TitleCard_1: -1252953610
-      TitleCard_2: -691692533
+      TitleCard_0: -159706868
+      TitleCard_1: 1401657737
+      TitleCard_2: -1471416076
+      TitleCard_3: -179201662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
