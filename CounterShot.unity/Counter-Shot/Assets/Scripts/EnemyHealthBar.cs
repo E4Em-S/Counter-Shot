@@ -43,7 +43,7 @@ public class EnemyHealthBar : MonoBehaviour
     }
     IEnumerator waitforsec()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2f);
         enemyHealthBar.gameObject.SetActive(false);
 
     }

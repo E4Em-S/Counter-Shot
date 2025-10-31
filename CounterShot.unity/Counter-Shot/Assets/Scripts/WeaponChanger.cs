@@ -18,9 +18,11 @@ public class WeaponChanger : MonoBehaviour
     [SerializeField] GameObject pistolAmmoUI;
     [SerializeField] GameObject shotgunAmmoUI;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        currentWeaponIndex = 0;
         totalWeapons = weaponHolder.transform.childCount;
         guns = new GameObject[totalWeapons];
 
@@ -41,7 +43,7 @@ public class WeaponChanger : MonoBehaviour
     }
     public void OnChangeWeapons(InputValue inputVal)
     {
-        //Debug.Log("Changing weapons");
+        Debug.Log("Changing weapons");
         if (currentWeaponIndex < totalWeapons - 1)
         {
             guns[currentWeaponIndex].SetActive(false);

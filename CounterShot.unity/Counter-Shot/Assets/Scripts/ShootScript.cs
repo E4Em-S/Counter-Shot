@@ -35,7 +35,7 @@ public class ShootScript : MonoBehaviour
     [Header("Shotgun")]
      [SerializeField] GameObject shotgunAmmountUI;
     [SerializeField] GameObject shotgunBullet;
-    public float spreadAngle = 5f;
+    public float spreadAngle = 14f;
     public float shotgunSpeed;
     public int shotgunAmmo;
     public float shotgunAttackRate;
@@ -101,7 +101,9 @@ public class ShootScript : MonoBehaviour
             case 0:
                 if (pistolAmmo >= 6) break;
                 pistolAmmo++;
-                 //reloadPistol.SetTrigger("Spin");
+                pistolAmmo++;
+                //reloadPistol.SetTrigger("Spin");
+                AddBulletPistolUI();
                 AddBulletPistolUI();
             break;
             case 1:

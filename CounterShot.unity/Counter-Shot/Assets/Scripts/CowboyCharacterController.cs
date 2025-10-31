@@ -26,6 +26,7 @@ public class CowboyCharacterController : MonoBehaviour
     public bool isParrying = false;
     [SerializeField] float parryDur; //parry durration
     [SerializeField] CircleCollider2D parryZone;
+    Animator parryanim;
 
     [Header("PlayerHealth")]
     [SerializeField] Collider2D playerHitbox;
@@ -57,6 +58,7 @@ public class CowboyCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        parryanim = GetComponent<Animator>();
         canDash = true;
         SetWeaponSO(weapon);
         playerHitbox.enabled = true;
@@ -75,6 +77,7 @@ public class CowboyCharacterController : MonoBehaviour
         if(isDashing == false)
         {
             movementInput = value.Get<Vector2>();
+            
         }
     }
 
@@ -84,10 +87,22 @@ public class CowboyCharacterController : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
-  
+    
+
+    
     public void OnParry(InputValue parryValue)
     {
         isParrying = true;
+        if (movementInput.x > 0)
+        {
+            parryanim.SetTrigger("ParryRight");
+        }
+        else
+        {
+            parryanim.SetTrigger("ParryLeft");
+
+        }
+        
         StartCoroutine(Parry());
     }
     public void SetWeaponSO(DiffWeaponsSO myWeapons)
@@ -102,11 +117,14 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
+                playerHitbox.enabled = false;
                 StartCoroutine(DoFreeze());
                 GetComponent<ShootScript>().UpdateAmmo();
+                playerHitbox.enabled = true;
+
                 //Debug.Log("parry collision w: " + collision.gameObject);
 
-            }//come up with full ammo system when doing other weapons and change this bullshit
+            }
         }
     }
 

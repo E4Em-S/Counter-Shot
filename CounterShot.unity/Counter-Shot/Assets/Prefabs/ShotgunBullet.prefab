@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac4c2f87cda97a47bdb922b1042b4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killAfter: 0.6
+  killAfter: 0.7
 --- !u!114 &6128982295955719455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832f2633f20c1284a816c480310e8e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   bulletSpeed: 15
   destroyOnContact: 1
 --- !u!70 &1909705836626011126
