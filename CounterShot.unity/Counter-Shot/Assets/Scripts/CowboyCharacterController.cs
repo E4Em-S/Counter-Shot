@@ -55,6 +55,13 @@ public class CowboyCharacterController : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+    void Update()
+    {
+        if(movementInput.x == 0)
+        {
+            parryanim.SetTrigger("BacktoIdle");
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -74,10 +81,28 @@ public class CowboyCharacterController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        if(isDashing == false)
+        parryanim.SetFloat("inputX", movementInput.x);
+        parryanim.SetFloat("inputY", movementInput.y);
+
+        if (isDashing == false)
         {
             movementInput = value.Get<Vector2>();
-            
+
+        }
+        if (movementInput.x > 0)
+        {
+            parryanim.SetTrigger("WalkRight");//, true);
+        }
+        if (movementInput.x < 0)
+        {
+            parryanim.SetTrigger("WalkLeft");
+        }
+    }
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            parryanim.SetTrigger("idle");
         }
     }
 
