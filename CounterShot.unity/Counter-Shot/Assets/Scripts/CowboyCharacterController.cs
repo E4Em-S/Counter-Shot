@@ -30,6 +30,7 @@ public class CowboyCharacterController : MonoBehaviour
 
     [Header("PlayerHealth")]
     [SerializeField] Collider2D playerHitbox;
+    public bool isInvincible;
     public int playerHealth = 3;
 
     [Header("Dash")]
@@ -57,9 +58,10 @@ public class CowboyCharacterController : MonoBehaviour
     }
     void Update()
     {
-        if(movementInput.x == 0)
+        if(movementInput.x == 0 && movementInput.y == 0)
         {
-            parryanim.SetTrigger("BacktoIdle");
+            //parryanim.SetTrigger("BacktoIdle");
+            parryanim.SetBool("isMoving", false);
         }
     }
     // Start is called before the first frame update
@@ -83,6 +85,7 @@ public class CowboyCharacterController : MonoBehaviour
     {
         parryanim.SetFloat("inputX", movementInput.x);
         parryanim.SetFloat("inputY", movementInput.y);
+        parryanim.SetBool("isMoving", true);
 
         if (isDashing == false)
         {
@@ -91,18 +94,20 @@ public class CowboyCharacterController : MonoBehaviour
         }
         if (movementInput.x > 0)
         {
-            parryanim.SetTrigger("WalkRight");//, true);
+            //parryanim.SetTrigger("WalkRight");//, true);
         }
         if (movementInput.x < 0)
         {
-            parryanim.SetTrigger("WalkLeft");
+            //parryanim.SetTrigger("WalkLeft");
         }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.canceled)
         {
-            parryanim.SetTrigger("idle");
+            parryanim.SetFloat("LastInputX", movementInput.x);
+            parryanim.SetFloat("LastInputY", movementInput.y);
+            parryanim.SetBool("isMoving", false);
         }
     }
 
@@ -156,10 +161,12 @@ public class CowboyCharacterController : MonoBehaviour
     IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
+        isInvincible = true;
         //playerRenderer.material.color = flashColor;
         yield return new WaitForSecondsRealtime(parryDur);
         // playerRenderer.material.color = ogColor;
         parryZone.enabled = false;
+        isInvincible = false;
         isParrying = false;
 
     }

@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
     - target: {fileID: 5350383095976655681, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: parryDur
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5350383095976655681, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: moveSpeed
@@ -228,7 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7760812967544785573, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1928.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760812967544785573, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -488,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1136514963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,11 +505,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f905dac27f44e4392abd00fab48035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargespeed: 0
-  rotationspeed: 5
-  chargetime: 0
-  player: {fileID: 2522018661503860289, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+  chargespeed: 1
+  rotationspeed: 0
+  chargeCooldown: 0
+  target: {x: 0, y: 0}
   rb: {fileID: 1136514967}
+  playerposition: {fileID: 0}
 --- !u!61 &1136514964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -634,7 +639,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
