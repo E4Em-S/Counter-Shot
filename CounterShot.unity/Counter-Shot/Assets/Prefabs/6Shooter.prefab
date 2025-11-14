@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2233221381189019570}
   - component: {fileID: 3197757452994853511}
   - component: {fileID: 5000638134709001506}
+  - component: {fileID: 2593598322112335423}
   m_Layer: 0
   m_Name: 6Shooter
   m_TagString: Untagged
@@ -99,11 +100,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponManager: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 36ff3ef030b90d344bf679e37ba04035, type: 2}
+  ammoCounter: {fileID: 0}
   gunBaseTransform: {fileID: 0}
   gunImageTransform: {fileID: 2233221381189019570}
-  attackRate: 0
+  reloadPistol: {fileID: 0}
+  pistolattackRate: 0
   projectile: {fileID: 6377873509667444538, guid: b4e1543f2cf02c14a9574b502e094184, type: 3}
-  ammo: 3
-  ammoCounter: {fileID: 0}
+  pistolAmmoUI: {fileID: 0}
+  pistolAmmo: 0
+  shotgunAmmountUI: {fileID: 0}
+  shotgunBullet: {fileID: 0}
   spreadAngle: 15
   shotgunSpeed: 0
+  shotgunAmmo: 0
+  shotgunAttackRate: 0
+--- !u!95 &2593598322112335423
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542713013752932685}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

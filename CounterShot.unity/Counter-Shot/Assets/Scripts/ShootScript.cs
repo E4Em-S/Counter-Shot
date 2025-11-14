@@ -40,15 +40,21 @@ public class ShootScript : MonoBehaviour
     public int shotgunAmmo;
     public float shotgunAttackRate;
     int bulletsShotgun;
+    Animator gunFire;
+    public GameObject sixShooter;
 
     public void Update()
     {
         //UpdateAmmoDisplay();
-        
+
         if (pistolAmmo < 0 || shotgunAmmo < 0)
         {
             //add some juice to encourage parrying here
         }
+    }
+    void Start()
+    {
+        gunFire = sixShooter.GetComponent<Animator>();
     }
     public void OnLook(InputValue lookValue)
     {
@@ -74,6 +80,12 @@ public class ShootScript : MonoBehaviour
     }
     public void OnFire(InputValue fireValue)
     {
+        if(pistolAmmo > 0)
+        {
+          //gunFire.SetTrigger("Fire");  
+        }
+        
+
         //Debug.Log("firing");
         if (isAiming == true) //checking that the player is aiming to attack
         {

@@ -186,7 +186,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8394631725372379491}
@@ -359,13 +359,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootScript: {fileID: 5139577789706441796}
   rb: {fileID: 6629830673468361233}
-  moveSpeed: 10
+  moveSpeed: 20
   gunBaseTransform: {fileID: 8394631725372379491}
   gunImageTransform: {fileID: 2074848968969203412}
   isParrying: 0
-  parryDur: 0.3
+  parryDur: 1.5
   parryZone: {fileID: 1168657482389586690}
   playerHitbox: {fileID: 797559830877514880}
+  isInvincible: 0
   playerHealth: 10
   isDashing: 0
   dashSpeed: 2
@@ -399,7 +400,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &5517898443646091974
 Animator:
   serializedVersion: 5
@@ -639,7 +640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1928.23, y: -13.68}
+  m_AnchoredPosition: {x: -1928.8, y: -13.68}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1049735396479148333
@@ -2067,7 +2068,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5542713013752932685, guid: 5f240ad30d3eaeb46a0ea369cb3afa76, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2867076931344809948}
   m_SourcePrefab: {fileID: 100100000, guid: 5f240ad30d3eaeb46a0ea369cb3afa76, type: 3}
 --- !u!4 &2074848968969203412 stripped
 Transform:
@@ -2079,12 +2083,38 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5000638134709001506, guid: 5f240ad30d3eaeb46a0ea369cb3afa76, type: 3}
   m_PrefabInstance: {fileID: 159498624767265126}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5682710648073953323}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea0d88bab1e9eb7438e4e4838fb916bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5682710648073953323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5542713013752932685, guid: 5f240ad30d3eaeb46a0ea369cb3afa76, type: 3}
+  m_PrefabInstance: {fileID: 159498624767265126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2867076931344809948
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5682710648073953323}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c30939537756054b9ba11799aadfdd4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2520503304790953944
 PrefabInstance:
   m_ObjectHideFlags: 0
