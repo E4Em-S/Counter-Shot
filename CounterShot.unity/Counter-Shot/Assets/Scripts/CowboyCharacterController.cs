@@ -27,6 +27,7 @@ public class CowboyCharacterController : MonoBehaviour
     [SerializeField] float parryDur; //parry durration
     [SerializeField] CircleCollider2D parryZone;
     Animator parryanim;
+    [SerializeField] AudioSource parryAudioSource;
 
     [Header("PlayerHealth")]
     [SerializeField] Collider2D playerHitbox;
@@ -123,6 +124,7 @@ public class CowboyCharacterController : MonoBehaviour
     public void OnParry(InputValue parryValue)
     {
         isParrying = true;
+        
         if (movementInput.x > 0)
         {
             parryanim.SetTrigger("ParryRight");
@@ -147,6 +149,7 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
+                parryAudioSource.Play();
                 playerHitbox.enabled = false;
                 StartCoroutine(DoFreeze());
                 GetComponent<ShootScript>().UpdateAmmo();

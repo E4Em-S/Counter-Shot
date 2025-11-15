@@ -24,6 +24,7 @@ public class ShootScript : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject pistolAmmoUI;
     int bulletspistol;
+    public AudioSource pistolShoot;
 
     GameObject attackTemp;
     bool attacking = false;
@@ -42,6 +43,7 @@ public class ShootScript : MonoBehaviour
     int bulletsShotgun;
     Animator gunFire;
     public GameObject sixShooter;
+    public AudioSource shotgunShoot;
 
     public void Update()
     {
@@ -93,12 +95,14 @@ public class ShootScript : MonoBehaviour
             if (weaponManager.currentWeaponIndex == 0 && attackRdy && pistolAmmo > 0)
             {
                 RemoveBulletPistolUI();
+                pistolShoot.Play();
                 pistolAmmo--;
                 StartCoroutine(Shoot());
             }
             else if (weaponManager.currentWeaponIndex == 1 && attackRdy && shotgunAmmo > 0)
             {
                 RemoveBulletShotgunUI();
+                shotgunShoot.Play();
                 shotgunAmmo--;
                 StartCoroutine(Shoot());
             }
@@ -196,7 +200,7 @@ public class ShootScript : MonoBehaviour
         for (int i = bulletsShotgun - 1; i >= 0 - 1; i--)
         {
             GameObject bullet = shotgunAmmountUI.transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            
             if (bullet.activeSelf)
             {
                 bullet.SetActive(false);

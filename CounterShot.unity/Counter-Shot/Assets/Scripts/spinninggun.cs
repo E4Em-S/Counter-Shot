@@ -9,6 +9,7 @@ public class spinninggun : MonoBehaviour
     int parrychance;
 
     Transform Spawnpoint;
+    [SerializeField] AudioSource gunShotSound;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,10 @@ public class spinninggun : MonoBehaviour
 
     public void firebullet()
     {
+        gunShotSound.Play();
         parrychance = Random.Range(0, 5);
         GameObject spawnedbullet = Instantiate(Bullet, Spawnpoint.position, Spawnpoint.rotation);
-        if(parrychance == 3 || parrychance == 4)
+        if (parrychance == 3 || parrychance == 4)
         { 
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
             sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);

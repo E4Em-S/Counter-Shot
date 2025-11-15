@@ -16,6 +16,8 @@ public class horse : MonoBehaviour
     public Rigidbody2D rb;
     bool lookAt;
     SpriteRenderer horseSprite;
+    [SerializeField] AudioSource horseNeigh;
+    [SerializeField] AudioSource horseGallop;
 
     Animator horseanim;
     public GameObject playerposition;
@@ -78,14 +80,16 @@ public class horse : MonoBehaviour
     IEnumerator ChargeLoop()
     {
         horseanim.SetBool("Charge!", true);
+        
+        
         while (true)
         {
             Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position; //save players position
             //windup
-            Debug.Log("WindUPAnimhere");
+            horseNeigh.Play();
             horseanim.SetTrigger("windup");
             yield return new WaitForSeconds(chargeWindup);
-
+            horseGallop.Play();
             //overshoot
             Vector3 dir = (playerPos - transform.position).normalized;
             chargeEndPoint = playerPos + dir * overshotDistance;
@@ -103,6 +107,7 @@ public class horse : MonoBehaviour
                 yield return null;
             }
             horseanim.SetTrigger("ChargeOver");
+            horseGallop.Stop();
             yield return new WaitForSeconds(chargeCooldown);
             
 

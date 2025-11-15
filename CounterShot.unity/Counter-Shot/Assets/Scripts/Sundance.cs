@@ -7,6 +7,7 @@ public class Sundance : MonoBehaviour
 {
     public Transform bulletspawn;
     int parrychance;
+    [SerializeField] AudioSource gunShotSound;
 
     public GameObject bullet;
     
@@ -26,12 +27,14 @@ public class Sundance : MonoBehaviour
     {
         parrychance = Random.Range(0, 5);
         GameObject spawnedbullet = Instantiate(bullet, bulletspawn.position, bulletspawn.rotation);
-        if(parrychance == 3 || parrychance == 4)
+        gunShotSound.Play();
+        if (parrychance == 3 || parrychance == 4)
         { 
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
             sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
             spawnedbullet.tag = "Parryable";
             spawnedbullet.AddComponent<Parryablebullet>();
+            
         }
        
     }

@@ -43,7 +43,7 @@ public class WeaponChanger : MonoBehaviour
     }
     public void OnChangeWeapons(InputValue inputVal)
     {
-        Debug.Log("Changing weapons");
+        
         if (currentWeaponIndex < totalWeapons - 1)
         {
             guns[currentWeaponIndex].SetActive(false);
