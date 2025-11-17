@@ -17,11 +17,12 @@ public class ControllerInputManager : MonoBehaviour
             instance = this;
         }
         _playerInput = GetComponent<PlayerInput>();
-        //_menuOpenClose = _playerInput.actions["MenuOpenClose"];
+        _menuOpenClose = _playerInput.actions["MenuOpenClose"];
     }
     private void Update()
     {
-        //MenuOpenCloseInput = _menuOpenClose.WasPressedThisFrame();
+        MenuOpenCloseInput = _menuOpenClose.WasPressedThisFrame();
     }
+
 
 }

@@ -1,5 +1,46 @@
 {
     "name": "MenuController",
-    "maps": [],
-    "controlSchemes": []
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "ba5f8200-9fcf-45c4-850a-14eb5ee19de8",
+            "actions": [
+                {
+                    "name": "MenuOpenClose",
+                    "type": "Button",
+                    "id": "100b5ff6-4358-4664-9f7b-73d46ee1d8a9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d18e474d-1d1c-41fc-a3af-3b922a827168",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";ControllerMenu",
+                    "action": "MenuOpenClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "ControllerMenu",
+            "bindingGroup": "ControllerMenu",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
