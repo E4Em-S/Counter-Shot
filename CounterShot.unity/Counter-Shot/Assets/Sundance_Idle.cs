@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 public class Sundance_Idle : StateMachineBehaviour
 
@@ -10,10 +12,12 @@ public class Sundance_Idle : StateMachineBehaviour
     int whichattack;
     int attack1 = 0;
     int attack2 = 0;
+    private BoxCollider2D sundanceHitbox;
      chuddywaitforsec chud;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        sundanceHitbox = animator.GetComponent<BoxCollider2D>();
          chud = animator.GetComponent<chuddywaitforsec>();
         //Debug.Log(whichattack);
         chud.StartCoroutine(chud.waiting(() => TriggerAttack(animator)));
@@ -35,6 +39,7 @@ public class Sundance_Idle : StateMachineBehaviour
     }
     void TriggerAttack(Animator animator)
     {
+        sundanceHitbox.enabled = true;
         whichattack = Random.Range(0, 2);
         //Debug.Log(whichattack);
         if (attack1 == 2)

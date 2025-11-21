@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class PlayerHealth : MonoBehaviour
 
     private Color ogColor;
 
+    private int maxPlayerHealth = 3;
+    public Slider cigaretteSlider;
 
     private void Start()
     {
         playerHitbox.enabled = true;
         ogColor = playerRenderer.material.color;
+        cigaretteSlider.maxValue = maxPlayerHealth;
+        cigaretteSlider.maxValue = playerHealth;
     }
     public void OnTriggerEnter2D(Collider2D other) //checking for damage to player specifically
     {
@@ -33,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
             if (cowboyCharacterControllerRef.isDashing == true || cowboyCharacterControllerRef.isInvincible == true)//check if dashing
                 return;
             playerHealth--;
+            cigaretteSlider.value = playerHealth;
             StartCoroutine(FlashRed());
             //Debug.Log("Took damage from: " + other.gameObject);
         }

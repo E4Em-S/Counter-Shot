@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class CowboyCharacterController : MonoBehaviour
 {
     DiffWeaponsSO weapon;
@@ -33,6 +34,7 @@ public class CowboyCharacterController : MonoBehaviour
     [SerializeField] Collider2D playerHitbox;
     public bool isInvincible;
     public int playerHealth = 3;
+
 
     [Header("Dash")]
     public bool isDashing;
@@ -75,6 +77,7 @@ public class CowboyCharacterController : MonoBehaviour
         parryZone.enabled = false;
         playerRenderer = GetComponent<Renderer>();
         ogColor = playerRenderer.material.color;
+
     }
 
     private void FixedUpdate()
@@ -92,14 +95,6 @@ public class CowboyCharacterController : MonoBehaviour
         {
             movementInput = value.Get<Vector2>();
 
-        }
-        if (movementInput.x > 0)
-        {
-            //parryanim.SetTrigger("WalkRight");//, true);
-        }
-        if (movementInput.x < 0)
-        {
-            //parryanim.SetTrigger("WalkLeft");
         }
     }
     public void OnMove(InputAction.CallbackContext context)
