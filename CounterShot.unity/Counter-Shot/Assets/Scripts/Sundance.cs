@@ -10,18 +10,29 @@ public class Sundance : MonoBehaviour
     [SerializeField] AudioSource gunShotSound;
 
     public GameObject bullet;
+    bool horseSpawned = false;
+    public EnemyHealth EH;
+    Animator anim;
+    public BoxCollider2D box;
     
     // Start is called before the first frame update
     void Start()
     {
-       
-       
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(EH.currentHealth <= 30 && horseSpawned == false)
+        {
+             box.enabled = false;
+            anim.SetTrigger("CallHorse");
+            horseSpawned = true;
+          
+
+        }
     }
     public void FireGun()
     {
