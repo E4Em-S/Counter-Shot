@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
+    
+    [SerializeField] private GameObject _gunshotImage;
+    [SerializeField] private AudioSource gunshotSound;
     public void StartMenu()
     {
         SceneManager.LoadScene(0);
@@ -15,21 +18,17 @@ public class SceneSwitcher : MonoBehaviour
     }
     public void Sundance()
     {
+        _gunshotImage.SetActive(true);
+        gunshotSound.Play();
+        waitForSecconds();
         SceneManager.LoadScene(1);
     }
     public void Quit()
     {
         Application.Quit();
     }
-    // Start is called before the first frame update
-    void Start()
+    private IEnumerator waitForSecconds()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        yield return new WaitForSeconds(1);
     }
 }

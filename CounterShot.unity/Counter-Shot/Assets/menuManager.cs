@@ -12,6 +12,7 @@ public class menuManager : MonoBehaviour
     [SerializeField] private GameObject _startMenu;
     [SerializeField] private GameObject _selectionMenu;
 
+
     [Header("Scripts to deactivate on pause")]
     [SerializeField] private ShootScript player;
 
@@ -21,18 +22,28 @@ public class menuManager : MonoBehaviour
     [SerializeField] private GameObject _startMenuFirst;
     [SerializeField] private GameObject _selectionMenuFirst;
 
+
+
     private bool isPaused;
     private void Start()
     {
+        if(SceneManager.GetActiveScene().name== "MainMenuScene")
+        {
+         _startMenu.SetActive(true);
+        _selectionMenu.SetActive(false);
+        }
+        if(SceneManager.GetActiveScene().name == "SundanceFight")
+        {
         isPaused = false;
         _pauseMenuCanvasGO.SetActive(false);
         _settingsMenuCanvasGO.SetActive(false);
-        _startMenu.SetActive(true);
-        _selectionMenu.SetActive(false);
+        }
+
     }
     private void Update()
     {
-        if (ControllerInputManager.instance.MenuOpenCloseInput)
+
+         if (ControllerInputManager.instance.MenuOpenCloseInput)
         {
             if(!isPaused)
             {
@@ -43,6 +54,8 @@ public class menuManager : MonoBehaviour
                 Unpause();
             }
         }
+        
+       
     }
 
     public void Unpause()
