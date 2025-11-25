@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 797559830877514880}
   - component: {fileID: 353947055206942490}
   - component: {fileID: 1932881167955271183}
+  - component: {fileID: 8039134619223847961}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -366,11 +367,10 @@ MonoBehaviour:
   isParrying: 0
   parryDur: 1.5
   parryZone: {fileID: 1168657482389586690}
-  parryAudioSource: {fileID: 0}
+  parryAudioSource: {fileID: 8039134619223847961}
   playerHitbox: {fileID: 797559830877514880}
   isInvincible: 0
   playerHealth: 10
-  cigaretteSlider: {fileID: 2908513384100161124}
   isDashing: 0
   dashSpeed: 2
   dashDur: 0.1
@@ -604,6 +604,102 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!82 &8039134619223847961
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522018661503860289}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7a6eb15f87016cf46838ad0ff5938315, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.782
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2532710854714915756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1705,7 @@ MonoBehaviour:
   playerRenderer: {fileID: 783271806919733090}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDur: 0.1
+  cigaretteSlider: {fileID: 2908513384100161124}
 --- !u!1 &6142242477606209550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2419,7 @@ RectTransform:
   m_GameObject: {fileID: 8927846234026144366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 126466252354076517}
@@ -2331,7 +2428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -609, y: -449}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2908513384100161124
@@ -2641,7 +2738,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dcf7210f8f554cc489b068a4fc8d9e12, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.511
+  m_Volume: 0.455
   m_Pitch: 1
   Loop: 0
   Mute: 0

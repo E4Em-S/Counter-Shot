@@ -307,6 +307,8 @@ MonoBehaviour:
   bulletspawn: {fileID: 1953683358384655628}
   gunShotSound: {fileID: 6913145437920263304}
   bullet: {fileID: 6774098797152376163, guid: e212119b1860dac4c88ac0eb9bac0e1e, type: 3}
+  EH: {fileID: 4700339003595401044}
+  box: {fileID: 889845825329877270}
 --- !u!95 &866013109650825859
 Animator:
   serializedVersion: 5
@@ -335,7 +337,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4924540069934742449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -424,8 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba1033f71b1b3848a96e6c609a23c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 50
-  maxHealth: 50
+  currentHealth: 60
+  maxHealth: 60
   targetLayoutGroup: {fileID: 8596549950509426725}
 --- !u!114 &252393775865223389
 MonoBehaviour:
