@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationspeed: 500
+  parryableBulletSprite: {fileID: 21300000, guid: 3ecee64287b987e4386531d96eecd341, type: 3}
   Bullet: {fileID: 4025796234712710193, guid: 1b1ffc648eb5006418d4773b09530d1d, type: 3}
   gunShotSound: {fileID: 5791943369126593321}
 --- !u!114 &5832329633717778108
