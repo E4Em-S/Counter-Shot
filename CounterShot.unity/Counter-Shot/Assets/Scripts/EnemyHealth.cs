@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;
     public int maxHealth;
     // Start is called before the first frame update
+    [SerializeField] GameObject trainingDummyPrefab;
+    [SerializeField] Transform trainingdummyposition;
 
 
     [Header("LayoutGroup")]
@@ -22,11 +24,18 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            RespawnTrainingDummy();
             Destroy(gameObject);
         }
     }
+    //wronggggg
     public void AddDamage(int damage)
     {
         currentHealth = currentHealth - damage;
+    }
+    public IEnumerator RespawnTrainingDummy(){
+        yield return new WaitForSeconds(1);
+        GameObject.Instantiate(trainingDummyPrefab, trainingdummyposition.position, Quaternion.identity);
+        Debug.Log("spawn another");
     }
     }
