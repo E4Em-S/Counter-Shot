@@ -144,7 +144,7 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
-                parryAudioSource.Play();
+                //parryAudioSource.Play();
                 playerHitbox.enabled = false;
                 StartCoroutine(DoFreeze());
                 GetComponent<ShootScript>().UpdateAmmo();

@@ -32,7 +32,7 @@ public class Parryablebullet : MonoBehaviour
         if (collision.tag == "parryCircle")
         {
             //Debug.Log(collision);
-            parryexplode.SetTrigger("isParried");
+            //parryexplode.SetTrigger("isParried");
         }
         if (collision.tag == "Player")
         {
