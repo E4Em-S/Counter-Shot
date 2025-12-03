@@ -7,11 +7,13 @@ public class Pricklypeteidle : StateMachineBehaviour
     int whichattack;
     int attack1 = 0;
     int attack2 = 0;
+    int attack3 = 0;
     chuddywaitforsec chud;
+    EnemyHealth eh;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         chud = animator.GetComponent<chuddywaitforsec>();
-
+        eh = animator.GetComponent<EnemyHealth>();
         chud.StartCoroutine(chud.waiting(() => TriggerAttack(animator)));
     }
 
@@ -29,7 +31,15 @@ public class Pricklypeteidle : StateMachineBehaviour
     }
     void TriggerAttack(Animator animator)
     {
-        whichattack = Random.Range(0, 2);
+        if (eh.currentHealth <= 40)
+        {
+            whichattack = Random.Range(0, 3);
+        }
+        else
+        {
+            whichattack = Random.Range(0, 2);
+        }
+       
         
         if (attack1 == 2)
         {
@@ -41,6 +51,11 @@ public class Pricklypeteidle : StateMachineBehaviour
             whichattack = 0;
             attack2 = 0;
         }
+        if( attack3 ==1)
+        {
+            whichattack = Random.Range(0, 2);
+            attack3 = 0;
+        }
         if (whichattack == 0)
         {
             animator.SetTrigger("Spikeshot");
@@ -50,6 +65,10 @@ public class Pricklypeteidle : StateMachineBehaviour
         {
             animator.SetTrigger("Jump");
             attack2++;
+        }
+        else if (whichattack == 2) {
+            animator.SetTrigger("Call");
+            attack3++;
         }
     }
     }

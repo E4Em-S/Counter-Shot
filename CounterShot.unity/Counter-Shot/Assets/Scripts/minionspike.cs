@@ -16,7 +16,7 @@ public class minionspike : MonoBehaviour
         Vector3 Direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(Direction.x, Direction.y).normalized * force;
         float rot = Mathf.Atan2(-Direction.y, -Direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot);
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
     }
 
     // Update is called once per frame

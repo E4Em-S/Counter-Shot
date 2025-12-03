@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4704648405914020086}
   m_Layer: 0
   m_Name: spikespawn
-  m_TagString: Untagged
+  m_TagString: spikespawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,5 +203,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea73d345f8b123d479d8d1225ef08a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 3355805202187782460, guid: 46d6b715d8e5acd499aabb6ca11f033e, type: 3}
   bulletpos: {fileID: 0}
