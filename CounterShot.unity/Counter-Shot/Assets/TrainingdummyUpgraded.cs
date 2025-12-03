@@ -11,6 +11,12 @@ public class TrainingdummyUpgraded : MonoBehaviour
     [SerializeField] private float spawnRadius = 0.5f;
     [SerializeField] Sprite parryBulletImg;
     int parrychance;
+
+    [SerializeField] GameObject trainingDummyPrefab;
+    [SerializeField] Transform trainingdummyposition;
+
+    public EnemyHealth enemyHealthScript;
+
     void Start()
     {
 
@@ -74,10 +80,10 @@ public class TrainingdummyUpgraded : MonoBehaviour
         }
         playCorroutineAgain();
     }
-    void playCorroutineAgain()
+    public void playCorroutineAgain()
     {
         StartCoroutine(waittoexplode());
     }
-    
+  
 }
 

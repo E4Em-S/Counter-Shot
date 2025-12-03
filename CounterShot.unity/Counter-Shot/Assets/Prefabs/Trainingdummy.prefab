@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 5007914947955815185}
   - component: {fileID: 8428782661531885020}
   - component: {fileID: 5409359452475169543}
+  - component: {fileID: 3970098117755199784}
   m_Layer: 0
   m_Name: Trainingdummy
   m_TagString: Enemy
@@ -265,6 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 30
   maxHealth: 30
+  trainingDummyScript: {fileID: 8428782661531885020}
+  trainingdummyprefab: {fileID: 7396046623630454241}
   targetLayoutGroup: {fileID: 4911798069255416729}
 --- !u!114 &8428782661531885020
 MonoBehaviour:
@@ -283,6 +286,9 @@ MonoBehaviour:
   bulletSpeed: 5
   spawnRadius: 0.5
   parryBulletImg: {fileID: 21300000, guid: 1969f2589275a5941b570022b9ebe047, type: 3}
+  trainingDummyPrefab: {fileID: 7396046623630454241}
+  trainingdummyposition: {fileID: 0}
+  enemyHealthScript: {fileID: 5007914947955815185}
 --- !u!70 &5409359452475169543
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -318,6 +324,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 2}
   m_Direction: 0
+--- !u!114 &3970098117755199784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396046623630454241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28dd963247b95e469bd0ab6f16f8314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 4911798069255416729}
+  enemyHealthBar: {fileID: 8446384728776160147}
+  isVisible: 0
+  accumulatedDam: 0
 --- !u!1 &7788158879215072755
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8446384728776160147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5059304383566193792, guid: aa9d85aa064e52744af204da9ba59982, type: 3}
+  m_PrefabInstance: {fileID: 3675452558395479827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9178380707593716500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5503957568119804935, guid: aa9d85aa064e52744af204da9ba59982, type: 3}

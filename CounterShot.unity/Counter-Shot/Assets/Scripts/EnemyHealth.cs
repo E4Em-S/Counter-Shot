@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : MonoBehaviour
 {
     public float currentHealth;
     public int maxHealth;
     // Start is called before the first frame update
-    [SerializeField] GameObject trainingDummyPrefab;
-    [SerializeField] Transform trainingdummyposition;
+    public TrainingDummyRespawnManager trainingDummyRespawnManagerScript;
+     [SerializeField] public Scene currentScene;
 
 
     [Header("LayoutGroup")]
     public LayoutGroup targetLayoutGroup;
     void Start()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (SceneManager.GetActiveScene().name == "TutorialScene")
+            trainingDummyRespawnManagerScript = GameObject.Find("trainingDummyrespawnManager").GetComponent<TrainingDummyRespawnManager>();
     }
 
     // Update is called once per frame
@@ -24,7 +27,14 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            RespawnTrainingDummy();
+            
+            if(SceneManager.GetActiveScene().name == "TutorialScene")
+            {
+                Debug.Log("SceneMatches");
+                trainingDummyRespawnManagerScript.Invoke("RespawnTrainingDummy", 1);
+            }
+            
+            //currentHealth = maxHealth;
             Destroy(gameObject);
         }
     }
@@ -33,9 +43,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = currentHealth - damage;
     }
-    public IEnumerator RespawnTrainingDummy(){
-        yield return new WaitForSeconds(1);
-        GameObject.Instantiate(trainingDummyPrefab, trainingdummyposition.position, Quaternion.identity);
-        Debug.Log("spawn another");
-    }
+    
+
+
     }

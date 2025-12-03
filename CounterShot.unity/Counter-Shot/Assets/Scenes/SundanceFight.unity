@@ -412,6 +412,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 783271806919733090, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932881167955271183, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2252816241014685813, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -745,7 +753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &707593633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef8f083f8d95634bb2b8ad36777a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenuCanvasGO: {fileID: 0}
+  _pauseMenuCanvasGO: {fileID: 1966894835}
   _settingsMenuCanvasGO: {fileID: 1105561749}
   _startMenu: {fileID: 0}
   _selectionMenu: {fileID: 0}
@@ -2443,7 +2451,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.46875, y: 0.28125, z: 0}
   m_MaxChunkCount: 16
@@ -3908,7 +3916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1966894836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4331,7 +4339,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
