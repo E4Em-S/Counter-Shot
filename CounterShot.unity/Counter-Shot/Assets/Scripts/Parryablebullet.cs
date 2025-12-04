@@ -10,22 +10,45 @@ public class Parryablebullet : MonoBehaviour
     CircleCollider2D cd;
     CapsuleCollider2D cc;
     [SerializeField] Animator parryexplode;
-    [SerializeField] Sprite parrybulletsprite;
+    public Sprite parrybulletsprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        parryexplode = this.GetComponent<Animator>();
+       
+
+
+     /*   parryexplode = this.GetComponent<Animator>();
         if(parryexplode == null)
         {
             parryexplode = this.AddComponent<Animator>();
-        }
+        }*/
         rb = GetComponent<Rigidbody2D>();
         parryexplode = GetComponent<Animator>();
         //rb.velocity = transform.position * speed;
         cd = GetComponent<CircleCollider2D>();
         cc = GetComponent<CapsuleCollider2D>();
         StartCoroutine(Destroyself());
+
+        if (parrybulletsprite != null)
+        {
+            Debug.Log("assigning");
+            GetComponent<SpriteRenderer>().sprite = parrybulletsprite;
+            Debug.Log("Sprite is now " + GetComponent<SpriteRenderer>().sprite.name);
+        }
+        parryexplode = GetComponent <Animator>();
+        if(parryexplode != null)
+        {
+            parryexplode.enabled = false; 
+        }
+        else
+        {
+            parryexplode = this.GetComponent <Animator>();
+            if(parryexplode == null)
+            {
+                parryexplode= this.AddComponent<Animator>();
+            }
+        }
 
         //parryexplode.enabled = false;
         //SpriteRenderer sr = GetComponent<SpriteRenderer>();

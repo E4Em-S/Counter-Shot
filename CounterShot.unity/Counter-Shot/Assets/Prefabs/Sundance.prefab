@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletspawn: {fileID: 1953683358384655628}
   gunShotSound: {fileID: 6913145437920263304}
+  parryBulletImg: {fileID: 21300000, guid: 49ad7f68ee882a04abbd8300ad2ce25b, type: 3}
   bullet: {fileID: 6774098797152376163, guid: e212119b1860dac4c88ac0eb9bac0e1e, type: 3}
   EH: {fileID: 4700339003595401044}
   box: {fileID: 889845825329877270}
@@ -428,6 +429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 60
   maxHealth: 60
+  trainingDummyRespawnManagerScript: {fileID: 0}
+  currentScene:
+    m_Handle: 0
   targetLayoutGroup: {fileID: 8596549950509426725}
 --- !u!114 &252393775865223389
 MonoBehaviour:

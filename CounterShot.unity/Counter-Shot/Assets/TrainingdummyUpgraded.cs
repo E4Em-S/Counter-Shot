@@ -55,11 +55,11 @@ public class TrainingdummyUpgraded : MonoBehaviour
             if (parrychance == 3 || parrychance == 4)
             {
                 SpriteRenderer sprite = bullet.GetComponent<SpriteRenderer>();
-                //sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
-                //FIGURE OUT HOW TO SET SPRITE TO PINK ONE HERE
-                //spawnedbullet.GetComponent<SpriteRenderer>().
-                bullet.GetComponent<SpriteRenderer>().sprite = parryBulletImg;
+               
                 bullet.tag = "Parryable";
+
+                Parryablebullet parryScript = bullet.AddComponent<Parryablebullet>();
+                parryScript.parrybulletsprite = parryBulletImg;
                 bullet.AddComponent<Parryablebullet>(); //adds parryable bullet script to the obj
                 
             }

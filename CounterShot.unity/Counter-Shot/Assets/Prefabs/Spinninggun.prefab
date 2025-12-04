@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationspeed: 500
-  parryableBulletSprite: {fileID: 21300000, guid: 3ecee64287b987e4386531d96eecd341, type: 3}
+  parryableBulletSprite: {fileID: 21300000, guid: 1969f2589275a5941b570022b9ebe047, type: 3}
   Bullet: {fileID: 4025796234712710193, guid: 1b1ffc648eb5006418d4773b09530d1d, type: 3}
   gunShotSound: {fileID: 5791943369126593321}
 --- !u!114 &5832329633717778108
@@ -151,7 +151,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3e1043ac09e4c0d45b647ab64f45e959, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.15
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 0
   Mute: 0
