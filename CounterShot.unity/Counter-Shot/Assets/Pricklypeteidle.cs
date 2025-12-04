@@ -84,7 +84,7 @@ public class Pricklypeteidle : StateMachineBehaviour
             whichattack = Random.Range(0, maxattackvalue);
         }
        
-        if(whichattack == lastAttack && consecutiveAttackCount >=2)
+        if(whichattack == lastAttack && consecutiveAttackCount >=1)
         {
             int attempts = 0;
             while (whichattack == lastAttack && attempts < 10) // Failsafe
