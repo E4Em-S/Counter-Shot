@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         healthUI.text = "Health: " + playerHealth;
         if(playerHealth <= 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
     }
        public void flashRed()

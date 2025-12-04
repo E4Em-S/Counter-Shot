@@ -32,9 +32,7 @@ public class Parryablebullet : MonoBehaviour
 
         if (parrybulletsprite != null)
         {
-            Debug.Log("assigning");
             GetComponent<SpriteRenderer>().sprite = parrybulletsprite;
-            Debug.Log("Sprite is now " + GetComponent<SpriteRenderer>().sprite.name);
         }
         parryexplode = GetComponent <Animator>();
         if(parryexplode != null)
