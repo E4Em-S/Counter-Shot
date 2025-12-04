@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TrainingScene.unity
     guid: 5cd069094e20c3f47bbad2daff155130
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: 419aad58cf8a25c4ea98679b280a8685
+  - enabled: 1
+    path: Assets/Scenes/SundanceVictory.unity
+    guid: 21c0115e7e175cf4e966f3315ed7dd1c
+  - enabled: 1
+    path: Assets/Scenes/PricklyPeteFight.unity
+    guid: 13f68315256c1084e80de25fe1403e5d
   m_configObjects: {}

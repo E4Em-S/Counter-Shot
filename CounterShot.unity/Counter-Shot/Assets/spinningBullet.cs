@@ -11,7 +11,7 @@ public class spinningBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * speed;
+        rb.velocity = transform.right * speed;
 
         StartCoroutine(Destroyself());
     }

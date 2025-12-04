@@ -32,9 +32,7 @@ public class Parryablebullet : MonoBehaviour
 
         if (parrybulletsprite != null)
         {
-            Debug.Log("assigning");
             GetComponent<SpriteRenderer>().sprite = parrybulletsprite;
-            Debug.Log("Sprite is now " + GetComponent<SpriteRenderer>().sprite.name);
         }
         parryexplode = GetComponent <Animator>();
         if(parryexplode != null)
@@ -67,7 +65,7 @@ public class Parryablebullet : MonoBehaviour
         {
             //Debug.Log(collision);
             parryexplode.enabled = true;
-            parryexplode.SetTrigger("isParried");
+            //parryexplode.SetTrigger("isParried");
             Destroy(gameObject); // if animation ist playing in main scene its because of this, making ti so that the bullet destroys in training scene
         }
         if (collision.tag == "Player")

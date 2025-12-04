@@ -27,6 +27,10 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            if(SceneManager.GetActiveScene().name == "SundanceFight")
+            {
+                SceneManager.LoadScene(4);
+            }
             
             if(SceneManager.GetActiveScene().name == "TutorialScene")
             {
