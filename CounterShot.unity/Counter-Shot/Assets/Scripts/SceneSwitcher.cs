@@ -7,6 +7,7 @@ public class SceneSwitcher : MonoBehaviour
 {
     
     [SerializeField] private GameObject _gunshotImage;
+    [SerializeField] private GameObject _gunshotImage2;
     [SerializeField] private AudioSource gunshotSound;
     public void StartMenu()
     {
@@ -22,6 +23,13 @@ public class SceneSwitcher : MonoBehaviour
         gunshotSound.Play();
         waitForSecconds();
         SceneManager.LoadScene(1);
+    }
+    public void PricklyPete()
+    {
+        _gunshotImage2.SetActive(true);
+        gunshotSound.Play();
+        waitForSecconds();
+        SceneManager.LoadScene(5);
     }
     public void Quit()
     {
