@@ -19,7 +19,6 @@ public class TrainingDummyRespawnManager : MonoBehaviour
     public void RespawnTrainingDummy()
     {
 
-        Debug.Log("respawning");
         Instantiate(trainingdummyprefab);
     }
 }
