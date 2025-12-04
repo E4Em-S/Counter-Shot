@@ -161,6 +161,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481033222838612664, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481033222838612664, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 481033222838612664, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252816241014685813, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252816241014685813, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2522018661503860289, guid: 7191cf109104bcb4a9189c72b4e35bc7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -569,7 +589,7 @@ MonoBehaviour:
   - {fileID: 1758132996}
   - {fileID: 119019698}
   - {fileID: 1460220520}
-  numberOfEnemiesToSpawn: 2
+  numberOfEnemiesToSpawn: 3
 --- !u!4 &1241706246
 Transform:
   m_ObjectHideFlags: 0

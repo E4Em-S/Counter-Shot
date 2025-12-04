@@ -44,9 +44,11 @@ GameObject:
   - component: {fileID: 9123923002254568091}
   - component: {fileID: 4884466151080868632}
   - component: {fileID: 3333770704501231784}
+  - component: {fileID: 4478201783407749367}
+  - component: {fileID: 6487246363180062745}
   m_Layer: 0
   m_Name: pricklypeteminion
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,4 +206,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3355805202187782460, guid: 46d6b715d8e5acd499aabb6ca11f033e, type: 3}
-  bulletpos: {fileID: 0}
+--- !u!114 &4478201783407749367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719167801834874869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba1033f71b1b3848a96e6c609a23c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 20
+  maxHealth: 10
+  trainingDummyRespawnManagerScript: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  targetLayoutGroup: {fileID: 0}
+--- !u!114 &6487246363180062745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719167801834874869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28dd963247b95e469bd0ab6f16f8314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 0}
+  enemyHealthBar: {fileID: 5059304383566193792, guid: aa9d85aa064e52744af204da9ba59982, type: 3}
+  isVisible: 0
+  accumulatedDam: 0
