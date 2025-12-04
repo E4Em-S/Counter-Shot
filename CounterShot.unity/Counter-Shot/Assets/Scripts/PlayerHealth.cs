@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         
         if (other.tag == "EnemyProjectile" || other.tag == "Parryable" || other.tag == "Horse")
         {
-            if (cowboyCharacterControllerRef.isDashing == true || cowboyCharacterControllerRef.isInvincible == true)//check if dashing
+            if (cowboyCharacterControllerRef.isDashing == true || cowboyCharacterControllerRef.isSuccesfulParrying == true)//check if dashing
                 return;
             playerHealth--;
             cigaretteSlider.value = playerHealth;

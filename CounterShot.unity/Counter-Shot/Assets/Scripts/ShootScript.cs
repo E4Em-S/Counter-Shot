@@ -150,7 +150,7 @@ public class ShootScript : MonoBehaviour
     {
        
         bulletspistol = pistolAmmoUI.transform.childCount;
-        for (int i = bulletspistol - 1; i >= 0 - 1; i--)
+        for (int i = bulletspistol - 1; i >= 0; i--)
         {
             GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
             //Debug.Log(i);
@@ -165,12 +165,14 @@ public class ShootScript : MonoBehaviour
     {
         //pistolAmmoUI.BroadcastMessage("onRotate");
         bulletspistol = pistolAmmoUI.transform.childCount;
-        for (int i = bulletspistol - 1; i >= 0 - 1; i--)
+        Debug.Log($"==ADD BULLET CALLED == Total children: {bulletspistol}");
+        for (int i = bulletspistol - 1; i >= 0; i--)
         {
             GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
-            //Debug.Log(i);
+            
             if (!bullet.activeSelf)
             {
+                Debug.Log("Activated bullet at index " + i);
                 bullet.SetActive(true);
                 break;
             }

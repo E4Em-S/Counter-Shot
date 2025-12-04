@@ -25,6 +25,7 @@ public class CowboyCharacterController : MonoBehaviour
 
     [Header("parrying")]
     public bool isParrying = false;
+    public bool isSuccesfulParrying = false;
     [SerializeField] float parryDur; //parry durration
     [SerializeField] CircleCollider2D parryZone;
     public ParticleSystem parryfogparticle;
@@ -146,12 +147,14 @@ public class CowboyCharacterController : MonoBehaviour
         {
             if (collision.tag == "Parryable")
             {
+                isSuccesfulParrying = true;
                 parryAudioSource.Play();
                 parryfogparticle.Play();
                 playerHitbox.enabled = false;
                 StartCoroutine(DoFreeze());
                 GetComponent<ShootScript>().UpdateAmmo();
                 playerHitbox.enabled = true;
+                isSuccesfulParrying = false;
                 //parryfogparticle.Stop();
                 //Debug.Log("parry collision w: " + collision.gameObject);
 
@@ -162,7 +165,7 @@ public class CowboyCharacterController : MonoBehaviour
     IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
-        isInvincible = true;
+        //isInvincible = true;
         //playerRenderer.material.color = flashColor;
         yield return new WaitForSecondsRealtime(parryDur);
         // playerRenderer.material.color = ogColor;
