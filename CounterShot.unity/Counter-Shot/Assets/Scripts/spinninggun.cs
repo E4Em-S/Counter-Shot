@@ -31,11 +31,11 @@ public class spinninggun : MonoBehaviour
         if (parrychance == 3 || parrychance == 4)
         { 
              SpriteRenderer sprite = spawnedbullet.GetComponent<SpriteRenderer>();
-            sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
-            //FIGURE OUT HOW TO SET SPRITE TO PINK ONE HERE
-            //spawnedbullet.GetComponent<SpriteRenderer>().
             spawnedbullet.tag = "Parryable";
-            spawnedbullet.AddComponent<Parryablebullet>(); //adds parryable bullet script to the obj
+
+            Parryablebullet parryScript = spawnedbullet.AddComponent<Parryablebullet>();
+            parryScript.parrybulletsprite = parryableBulletSprite;
+            //spawnedbullet.AddComponent<Parryablebullet>(); //adds parryable bullet script to the obj
         }
        
         StartCoroutine(waittforbullet());
