@@ -165,14 +165,13 @@ public class ShootScript : MonoBehaviour
     {
         //pistolAmmoUI.BroadcastMessage("onRotate");
         bulletspistol = pistolAmmoUI.transform.childCount;
-        Debug.Log($"==ADD BULLET CALLED == Total children: {bulletspistol}");
+        //Debug.Log($"==ADD BULLET CALLED == Total children: {bulletspistol}");
         for (int i = bulletspistol - 1; i >= 0; i--)
         {
             GameObject bullet = pistolAmmoUI.transform.GetChild(i).gameObject;
             
             if (!bullet.activeSelf)
             {
-                Debug.Log("Activated bullet at index " + i);
                 bullet.SetActive(true);
                 break;
             }

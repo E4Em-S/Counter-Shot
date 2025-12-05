@@ -148,6 +148,8 @@ public class CowboyCharacterController : MonoBehaviour
             if (collision.tag == "Parryable")
             {
                 isSuccesfulParrying = true;
+                //Debug.Log("disabling hitbox");
+                playerHitbox.enabled = false;
                 parryAudioSource.Play();
                 parryfogparticle.Play();
                 playerHitbox.enabled = false;
@@ -156,16 +158,24 @@ public class CowboyCharacterController : MonoBehaviour
                 playerHitbox.enabled = true;
                 isSuccesfulParrying = false;
                 //parryfogparticle.Stop();
-                //Debug.Log("parry collision w: " + collision.gameObject);
-
+               // Debug.Log("sucessful parry collision w: " + collision.gameObject);
+                StartCoroutine(ReEnableHitbox());
             }
         }
+    }
+    IEnumerator ReEnableHitbox()
+    {
+        yield return new WaitForSeconds(1.2f);
+        //Debug.Log("renabling hitbox");
+        playerHitbox.enabled = true;
+        isSuccesfulParrying = false;
+        isParrying = false;
     }
 
     IEnumerator Parry() //creates a delay, so the player can't parrry every sec
     {
         parryZone.enabled = true;
-        //isInvincible = true;
+        isInvincible = true;
         //playerRenderer.material.color = flashColor;
         yield return new WaitForSecondsRealtime(parryDur);
         // playerRenderer.material.color = ogColor;

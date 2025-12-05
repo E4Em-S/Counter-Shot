@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 
 public class petefollowplayer : StateMachineBehaviour
@@ -16,6 +17,8 @@ public class petefollowplayer : StateMachineBehaviour
     private float timer = 0f;
     private float originalGravity;
     private GameObject pricklyPete;
+    private bool isJumpAttacking;
+    private Transform followCircleDetached;
 
 
     
@@ -23,15 +26,24 @@ public class petefollowplayer : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0f;
-
+        isJumpAttacking = true;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cc = animator.GetComponent<CapsuleCollider2D>();
         spriteRenderer = animator.GetComponent<SpriteRenderer>();
         rb = animator.GetComponent<Rigidbody2D>(); // GET RIGIDBODY
         pricklyPete = GameObject.Find("PricklyPete");
+
+        followCircleDetached = GameObject.FindGameObjectWithTag("followCircleDetached").transform;
+
+
         animator.applyRootMotion = false;
-
-
+        if(rb != null)
+        {
+            originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+            rb.velocity = Vector2.zero;
+        }
+        
         if (spriteRenderer != null)
         {
             //spriteRenderer.enabled = false;
@@ -43,6 +55,11 @@ public class petefollowplayer : StateMachineBehaviour
         {
             followcircle = followCircleTransform.gameObject;
             followcircle.SetActive(true);
+
+            //unparent
+            followcircle.transform.SetParent(null);
+            //set to pete position
+            followcircle.transform.position = animator.transform.position;
         }
         else
         {
@@ -59,34 +76,31 @@ public class petefollowplayer : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        followCircleDetached = GameObject.FindGameObjectWithTag("followCircleDetached").transform;
         timer += Time.deltaTime;
         if (player == null) return;
 
         // Calculate distance to player
         float distanceToPlayer = Vector2.Distance(animator.transform.position, player.position);
-       // animator.applyRootMotion = false;
-       /* animator.transform.position = Vector3.MoveTowards(
-            animator.transform.position,
-            player.position,
-           followSpeed * Time.deltaTime);
-        Debug.Log("Animator position" + spriteRenderer.transform.position);
-       */
-        //Debug.Log(distanceToPlayer);
-        // Move towards player
-
-        //Vector3 direction = (player.position - animator.transform.position).normalized;
-
-        //Vector3 nextPos = animator.transform.position + direction * followSpeed * Time.deltaTime;
-        //animator.transform.position = nextPos;
-        //Debug.Log(nextPos);
-
-        //animator.transform.position = player.position;
-
         
-        followcircle.transform.position = Vector3.MoveTowards(
-            followcircle.transform.position,
-            player.position,
-           followSpeed * Time.deltaTime);
+
+        if (isJumpAttacking)
+        {
+            //Vector2 targetPosition = Vector2.MoveTowards(animator.transform.position, player.position, followSpeed * Time.deltaTime);
+            //followcircle.transform.position = Vector3.MoveTowards(followcircle.transform.position, player.position, followSpeed * Time.deltaTime);
+              if(rb != null)
+        {
+            //rb.MovePosition(targetPosition);
+        }
+
+        else
+        {
+            //animator.transform.position = followcircle.transform.position;
+        }
+
+        }
+        
+        
         //Debug.Log("circle position" + followcircle.transform.position);
         
 
@@ -95,24 +109,42 @@ public class petefollowplayer : StateMachineBehaviour
         // TRIGGER TRANSITION AFTER DURATION
         if (timer >= followDuration)
         {
-            Debug.Log("Timer complete, triggering descend @ " + followcircle.transform.position);
-            animator.transform.position = followcircle.transform.position;
+            //Debug.Log("Timer complete, triggering descend @ " + followcircle.transform.position);
+            //animator.transform.position = followcircle.transform.position;
             animator.SetTrigger("decend");
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Vector3 beforePosition = animator.transform.position;
+         Debug.Log($"BEFORE move - Animator at: {beforePosition}, Target: {followCircleDetached.transform.position}");
+        animator.applyRootMotion = false;
+        animator.transform.position = followCircleDetached.transform.position;
+        rb.transform.position = followCircleDetached.transform.position;
+          Debug.Log($"AFTER move - Animator at: {animator.transform.position}");
+        Debug.Log("circleDetached location " + followCircleDetached.transform.position);
+        animator.applyRootMotion = false;
+        isJumpAttacking = false;
         Debug.Log("=== STATE EXIT CALLED ===");
-        animator.applyRootMotion = true;
-        animator.transform.position = animator.rootPosition;
-
-        // Re-enable physics
-        if (rb != null)
+  // Re-enable physics
+        if (rb != null && followcircle != null)
         {
-            rb.gravityScale = originalGravity;
-            Debug.Log("Rigidbody gravity restored");
+            rb.velocity = Vector2.zero;
+            rb.position = followcircle.transform.position;
+           
         }
+        if(followcircle != null)
+        {
+            followcircle.transform.SetParent(animator.transform);
+            followcircle.transform.localPosition = Vector3.zero;
+        }
+                
+        if (rb != null)
+    {
+        rb.gravityScale = originalGravity;
+        Debug.Log("Rigidbody gravity restored");
+    }
 
         if (spriteRenderer != null)
         {
@@ -123,10 +155,7 @@ public class petefollowplayer : StateMachineBehaviour
         {
             cc.enabled = true;
         }
-
-        if (followcircle != null)
-        {
-           // followcircle.SetActive(false);
-        }
+        animator.applyRootMotion = false;
+       Debug.Log($"END of OnStateExit - Animator at: {animator.transform.position}");
     }
 }
