@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (cowboyCharacterControllerRef.isDashing == true || cowboyCharacterControllerRef.isSuccesfulParrying == true || cowboyCharacterControllerRef.isInvincible)//check if dashing
                 return;
+            camerashake.shake(duration: .4f, strength: .4f);
             playerHealth--;
             cigaretteSlider.value = playerHealth;
             StartCoroutine(FlashRed());
