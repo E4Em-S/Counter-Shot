@@ -26,7 +26,7 @@ public class Sundance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EH.currentHealth <= 30 && horseSpawned == false)
+        if(EH.currentHealth <= 40 && horseSpawned == false)
         {
              box.enabled = false;
             anim.SetTrigger("CallHorse");

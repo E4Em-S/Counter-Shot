@@ -20,6 +20,7 @@ public class Sundance_Idle : StateMachineBehaviour
         sundanceHitbox = animator.GetComponent<BoxCollider2D>();
          chud = animator.GetComponent<chuddywaitforsec>();
         //Debug.Log(whichattack);
+        sundanceHitbox.enabled = true;
         chud.StartCoroutine(chud.waiting(() => TriggerAttack(animator)));
       
     }
@@ -39,7 +40,7 @@ public class Sundance_Idle : StateMachineBehaviour
     }
     void TriggerAttack(Animator animator)
     {
-        sundanceHitbox.enabled = true;
+      
         whichattack = Random.Range(0, 2);
         //Debug.Log(whichattack);
         if (attack1 == 2)
