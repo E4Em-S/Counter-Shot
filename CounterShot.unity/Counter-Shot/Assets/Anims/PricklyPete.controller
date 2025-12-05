@@ -247,7 +247,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1255253505223333263}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -3126415737470067115}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -299,6 +300,18 @@ MonoBehaviour:
   followSpeed: 5
   verticalOffset: 0
   followDuration: 2
+--- !u!114 &-3126415737470067115
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef69f63b4c749349a8581d83d99a764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-2762056728065629560
 MonoBehaviour:
   m_ObjectHideFlags: 1

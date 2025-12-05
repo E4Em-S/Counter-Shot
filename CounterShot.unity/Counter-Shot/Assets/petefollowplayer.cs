@@ -117,44 +117,53 @@ public class petefollowplayer : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector3 beforePosition = animator.transform.position;
-         Debug.Log($"BEFORE move - Animator at: {beforePosition}, Target: {followCircleDetached.transform.position}");
-        animator.applyRootMotion = false;
-        animator.transform.position = followCircleDetached.transform.position;
-        rb.transform.position = followCircleDetached.transform.position;
-          Debug.Log($"AFTER move - Animator at: {animator.transform.position}");
-        Debug.Log("circleDetached location " + followCircleDetached.transform.position);
+        Debug.Log("EXIT Jump attack exiting");
+
+        //Vector3 beforePosition = animator.transform.position;
+        
+
+          //Vector3 targetPosition = followCircleDetached.transform.position;
+
         animator.applyRootMotion = false;
         isJumpAttacking = false;
-        Debug.Log("=== STATE EXIT CALLED ===");
-  // Re-enable physics
-        if (rb != null && followcircle != null)
+
+        //clear physics
+        if(rb != null)
         {
             rb.velocity = Vector2.zero;
-            rb.position = followcircle.transform.position;
-           
+            rb.angularVelocity = 0f;
+            rb.gravityScale = originalGravity;
         }
-        if(followcircle != null)
+         if(followcircle != null)
         {
             followcircle.transform.SetParent(animator.transform);
             followcircle.transform.localPosition = Vector3.zero;
         }
-                
-        if (rb != null)
-    {
-        rb.gravityScale = originalGravity;
-        Debug.Log("Rigidbody gravity restored");
-    }
-
-        if (spriteRenderer != null)
+         if (spriteRenderer != null)
         {
             spriteRenderer.enabled = true;
         }
 
-        if (cc != null)
+        //animator.transform.position = followCircleDetached.transform.position;
+        //rb.transform.position = followCircleDetached.transform.position;
+          
+        animator.applyRootMotion = false;
+        
+        Debug.Log("=== STATE EXIT CALLED ===");
+  // Re-enable physics
+       // if (rb != null && followcircle != null)
+      //  {
+      //      rb.velocity = Vector2.zero;
+            //rb.position = followcircle.transform.position;
+           
+     //   }
+       
+                
+       /* if (cc != null)
         {
             cc.enabled = true;
         }
+        */
         animator.applyRootMotion = false;
        Debug.Log($"END of OnStateExit - Animator at: {animator.transform.position}");
     }
