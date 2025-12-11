@@ -43,10 +43,7 @@ public class pricklyPeteLanding : StateMachineBehaviour
          Debug.Log($"[LANDING] Pete position AFTER: {animator.transform.position}");
       // ⭐ ADD THIS - Track position over next few frames
         MonoBehaviour mb = animator.GetComponent<MonoBehaviour>();
-        if(mb != null)
-        {
-            mb.StartCoroutine(ForcePositionCoroutine(animator, rb, cc));
-        }
+
     }
      // ⭐ force position every frame
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -62,29 +59,7 @@ public class pricklyPeteLanding : StateMachineBehaviour
         }
     }
     
-    private System.Collections.IEnumerator ForcePositionCoroutine(Animator animator, Rigidbody2D rb, CapsuleCollider2D cc)
-    {
-        // Force position for 5 frames
-        for(int i = 0; i < 5; i++)
-        {
-            animator.transform.position = targetPosition;
-            if(rb != null)
-            {
-                rb.position = targetPosition;
-            }
-            Debug.Log($"[LANDING Forcing Frame {i}] Pete at: {animator.transform.position}");
-            yield return null;
-        }
-        
-        isForcing = false;
-        // Re-enable physics and collider
-        if(rb != null)
-        {
-            rb.isKinematic = false;
-            Debug.Log("[LANDING] Rigidbody re-enabled");
-        }
-        
-}
+
 }
 
 

@@ -31,6 +31,11 @@ public class EnemyHealth : MonoBehaviour
             {
                 SceneManager.LoadScene(4);
             }
+            if(SceneManager.GetActiveScene().name == "PricklyPeterFight")
+            {
+                Debug.Log("fight  won");
+                SceneManager.LoadScene(4);
+            }
             
             if(SceneManager.GetActiveScene().name == "TutorialScene")
             {

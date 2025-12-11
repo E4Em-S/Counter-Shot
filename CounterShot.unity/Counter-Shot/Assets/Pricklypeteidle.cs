@@ -60,20 +60,20 @@ public class Pricklypeteidle : StateMachineBehaviour
        if (whichattack == 4)
         {
             
-            //animator.SetTrigger("Call");
+            animator.SetTrigger("Call");
             callPetersGaruntee = true;
-            //Debug.Log("csll peters");
+            Debug.Log("call peters");
             bc.enabled = true;
         }
         
 
         if (eh.currentHealth <= 40 && firstturnedhalfhp == true)
         {
-            maxattackvalue = 3;
+            maxattackvalue = 1;
         }
         else
         {
-            maxattackvalue = 2;
+            maxattackvalue = 1;
         }
         if(callPetersGaruntee == true)
         {
@@ -113,13 +113,14 @@ public class Pricklypeteidle : StateMachineBehaviour
                 break;
 
             case 1:
-                animator.SetTrigger("Jump");
-                break;
-
-            case 2:
                 Debug.Log("Whichattack is 2 PETER");
                 animator.SetTrigger("Call");
                 break;
+
+            case 2:
+                //animator.SetTrigger("Jump");
+                break;
+                
         }
 
 
