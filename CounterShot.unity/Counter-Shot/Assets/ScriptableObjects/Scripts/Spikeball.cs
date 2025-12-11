@@ -13,6 +13,7 @@ public class Spikeball : MonoBehaviour
     [SerializeField] private int numberOfBullets = 12;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float spawnRadius = 0.5f;
+    [SerializeField] Sprite parryBulletImg;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +60,10 @@ public class Spikeball : MonoBehaviour
                 SpriteRenderer sprite = bullet.GetComponent<SpriteRenderer>();
                 sprite.color = new UnityEngine.Color(1f, 0f, 0.82f);
                 bullet.tag = "Parryable";
-                bullet.AddComponent<Parryablebullet>();
+                Parryablebullet parryScript = bullet.AddComponent<Parryablebullet>();
+
+                parryScript.parrybulletsprite = parryBulletImg;
+                //bullet.AddComponent<Parryablebullet>();
 
             }
 
