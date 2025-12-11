@@ -8,6 +8,8 @@ public class Sundance : MonoBehaviour
     public Transform bulletspawn;
     int parrychance;
     [SerializeField] AudioSource gunShotSound;
+    [SerializeField] AudioSource Laughsound;
+    [SerializeField] AudioSource callhorsesound;
     [SerializeField] Sprite parryBulletImg;
 
     public GameObject bullet;
@@ -19,7 +21,7 @@ public class Sundance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Laughsound.Play();
         anim = GetComponent<Animator>();
     }
 
@@ -30,6 +32,7 @@ public class Sundance : MonoBehaviour
         {
              box.enabled = false;
             anim.SetTrigger("CallHorse");
+            
             horseSpawned = true;
           
 
@@ -62,6 +65,10 @@ public class Sundance : MonoBehaviour
 
         }
        
+    }
+    public void playsound()
+    {
+        callhorsesound.Play();
     }
    
 }
