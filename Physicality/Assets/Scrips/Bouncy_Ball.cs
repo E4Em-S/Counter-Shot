@@ -4,6 +4,9 @@ public class Bouncy_Ball : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] float minYvelocity;
+    [SerializeField] float minXvelocity;
+
+
     Rigidbody2D rb;
     bool gamestarted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +25,7 @@ public class Bouncy_Ball : MonoBehaviour
         if (gamestarted)
         {
             rb.linearVelocity = rb.linearVelocity.normalized * speed;
-            preventhorizontallock();
+            preventsoftlock();
         }
     }
     void LaunchBall()
@@ -33,13 +36,28 @@ public class Bouncy_Ball : MonoBehaviour
         Vector2 launchdir = new Vector2(randomx, 1f).normalized;
         rb.linearVelocity = launchdir * speed;
     }
-    void preventhorizontallock()
+    void preventsoftlock()
     {
+        Vector2 velocity = rb.linearVelocity;
+        bool changed = false;
         //prevents ball from getting stuck only moving horizontal
-        if (Mathf.Abs(rb.linearVelocity.y) < minYvelocity)
+        if (Mathf.Abs(velocity.y) < minYvelocity)
         {
-            float newY = rb.linearVelocity.y > 0 ? minYvelocity : -minYvelocity;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, newY).normalized * speed;
+            float newY = velocity.y > 0 ? minYvelocity : -minYvelocity;
+            velocity.y = newY;
+            changed = true;
+        }
+        // NEW: Prevent too vertical (stuck going up and down)
+        if (Mathf.Abs(velocity.x) < minXvelocity)
+        {
+            float newX = velocity.x > 0 ? minXvelocity : -minXvelocity;
+            velocity.x = newX;
+            changed = true;
+        }
+
+        if (changed)
+        {
+            rb.linearVelocity = velocity.normalized * speed;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
