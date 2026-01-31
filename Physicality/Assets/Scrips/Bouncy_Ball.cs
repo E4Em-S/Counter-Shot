@@ -1,29 +1,46 @@
 using UnityEngine;
 
-public class paddle_movement : MonoBehaviour
+public class Bouncy_Ball : MonoBehaviour
 {
-    public float speed;
-    float horizontalmovement;
-    [SerializeField] float maxX;
+    [SerializeField] float speed;
+    [SerializeField] float minYvelocity;
     Rigidbody2D rb;
+    bool gamestarted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb= GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalmovement = Input.GetAxis("Horizontal");
-        if ((horizontalmovement > 0 && transform.position.x < maxX) || (horizontalmovement < 0 && transform.position.x > -maxX))
+        if(!gamestarted && Input.GetKeyDown(KeyCode.Space))
         {
-
-            transform.position += Vector3.right * horizontalmovement * speed * Time.deltaTime;
+           LaunchBall();
         }
-
-
-
+        if (gamestarted)
+        {
+            rb.linearVelocity = rb.linearVelocity.normalized * speed;
+            preventhorizontallock();
+        }
+    }
+    void LaunchBall()
+    {
+        gamestarted = true;
+        //launches the ball at a random upward angle
+        float randomx = Random.Range(-1f, 1f);
+        Vector2 launchdir = new Vector2(randomx, 1f).normalized;
+        rb.linearVelocity = launchdir * speed;
+    }
+    void preventhorizontallock()
+    {
+        //prevents ball from getting stuck only moving horizontal
+        if (Mathf.Abs(rb.linearVelocity.y) < minYvelocity)
+        {
+            float newY = rb.linearVelocity.y > 0 ? minYvelocity : -minYvelocity;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, newY).normalized * speed;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,4 +65,4 @@ public class paddle_movement : MonoBehaviour
 
         }
     }
-}
+    }
