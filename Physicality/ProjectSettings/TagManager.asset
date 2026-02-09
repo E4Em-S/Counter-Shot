@@ -8,6 +8,8 @@ TagManager:
   - ball
   - wall
   - block
+  - bullet
+  - enemy
   layers:
   - Default
   - TransparentFX

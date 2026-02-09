@@ -6,6 +6,7 @@ public class paddle_movement : MonoBehaviour
     float horizontalmovement;
     [SerializeField] float maxX;
     Rigidbody2D rb;
+    public Player_Health playerhp;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +47,14 @@ public class paddle_movement : MonoBehaviour
 
 
 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "bullet")
+        {
+            Destroy(other.gameObject);
+            playerhp.TakeDamage(1);
         }
     }
 }

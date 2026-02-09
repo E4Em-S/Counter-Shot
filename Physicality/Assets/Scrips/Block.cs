@@ -7,9 +7,11 @@ public class Block : MonoBehaviour
     Rigidbody2D rb;
     bool isfalling = false;
     public float respawnDelay = 3f;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
         originalPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
@@ -62,4 +64,5 @@ public class Block : MonoBehaviour
 
 
     }
+    
 }
