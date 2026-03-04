@@ -8,17 +8,17 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 public class Battlehud : MonoBehaviour
 {
     public TextMeshProUGUI nametext;
-    public Slider hpslider;
+    public TextMeshProUGUI healthtext;
+  
 
 
     public void SetHud(unit stats)
     {
         nametext.text = stats.unitname;
-        hpslider.maxValue = stats.maxHP;
-        hpslider.value = stats.currentHP;
+        healthtext.text = "Health: " + stats.currentHP;
     }
     public void sethp(int hp)
     {
-        hpslider.value = hp;
+        healthtext.text = "Health: " + hp.ToString();
     }
 }

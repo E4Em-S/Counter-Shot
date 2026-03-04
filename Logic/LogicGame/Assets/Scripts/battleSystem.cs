@@ -11,6 +11,8 @@ public class battleSystem : MonoBehaviour
 {
     public Battlehud playerhud;
     public Battlehud enemyhud;
+    public AudioClip damagesound;
+    public AudioClip healsound;
     public TextMeshProUGUI battlepaneltext;
     public GameObject playerprefab;
     public GameObject enemyprefab;
@@ -19,6 +21,8 @@ public class battleSystem : MonoBehaviour
     public Transform enemybattlestation;
     unit playerunit;
     unit enemyunit;
+    Animator enemyanim;
+    Animator playeranim;
     public RhythmMinigame rhythmMinigame;
     // Tracks what action triggered the minigame
     private enum PendingAction { Attack, Heal }
@@ -35,7 +39,8 @@ public class battleSystem : MonoBehaviour
     }
     void Start()
     {
-
+        enemyanim =enemyunit.GetComponent<Animator>();
+        playeranim = playerunit.GetComponent<Animator>();
     }
 
     IEnumerator SetupBattle()
@@ -69,7 +74,7 @@ public class battleSystem : MonoBehaviour
         battlepaneltext.text = "Hit the circles!";
 
         // 5 circles for attack
-        rhythmMinigame.StartMinigame(circleCount: 5, duration: 2.5f, isAttack: true);
+        rhythmMinigame.StartMinigame(circleCount: 5, duration: 3.5f, isAttack: true);
     }
 
     public void Onhealbutton()
@@ -81,10 +86,10 @@ public class battleSystem : MonoBehaviour
         battlepaneltext.text = "Hit the circles!";
 
         // 4 circles for heal
-        rhythmMinigame.StartMinigame(circleCount: 4, duration: 2.2f, isAttack: false);
+        rhythmMinigame.StartMinigame(circleCount: 4, duration: 3.5f, isAttack: false);
     }
 
-   .
+   
     void HandleMinigameResult(float accuracyRatio)
     {
         if (pendingAction == PendingAction.Attack)
@@ -97,14 +102,15 @@ public class battleSystem : MonoBehaviour
     IEnumerator Playerattack(float accuracy)
     {
         
-        float multiplier = Mathf.Lerp(0.25f, 2.0f, accuracy);
+        float multiplier = Mathf.Lerp(0.6f, 2.5f, accuracy);
         int finalDamage = Mathf.RoundToInt(playerunit.damage * multiplier);
 
         // Show feedback
         string grade = GetGradeLetter(accuracy);
         battlepaneltext.text = $"{grade}! You deal {finalDamage} damage!";
-
+        playeranim.SetTrigger("attack");
         bool isDead = enemyunit.Takedamage(finalDamage);
+        AudioSource.PlayClipAtPoint(damagesound, Camera.main.transform.position);
         enemyhud.sethp(enemyunit.currentHP);
 
         yield return new WaitForSeconds(2f);
@@ -125,14 +131,15 @@ public class battleSystem : MonoBehaviour
     IEnumerator Playerheal(float accuracy)
     {
         
-        int baseHeal = Mathf.Max(1, Mathf.RoundToInt(playerunit.maxHP * 0.3f));
-        float multiplier = Mathf.Lerp(0.1f, 1.0f, accuracy);
+        int baseHeal = Mathf.Max(1, Mathf.RoundToInt(playerunit.maxHP * 0.25f));
+        float multiplier = Mathf.Lerp(0.25f, 1.0f, accuracy);
         int finalHeal = Mathf.Max(1, Mathf.RoundToInt(baseHeal * multiplier));
 
         string grade = GetGradeLetter(accuracy);
         battlepaneltext.text = $"{grade}! You heal {finalHeal} HP!";
-
+        playeranim.SetTrigger("heal");
         playerunit.Heal(finalHeal);
+        AudioSource.PlayClipAtPoint(healsound, Camera.main.transform.position);
         playerhud.sethp(playerunit.currentHP);
 
         yield return new WaitForSeconds(2f);
@@ -146,8 +153,9 @@ public class battleSystem : MonoBehaviour
     {
         battlepaneltext.text = "Enemy Turn";
         yield return new WaitForSeconds(1f);
-
+        enemyanim.SetTrigger("attack");
         bool isDead = playerunit.Takedamage(enemyunit.damage);
+        AudioSource.PlayClipAtPoint(damagesound, Camera.main.transform.position);
         playerhud.sethp(playerunit.currentHP);
 
         yield return new WaitForSeconds(1f);
