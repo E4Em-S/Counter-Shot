@@ -161,6 +161,8 @@ public class SlotMachineUI : MonoBehaviour
 
     public void ShowWin(int payout)
     {
+       
+       
         SetMessage($"Nice! +{payout} credits", winColor);
         ShowPayout(payout);
         SetBetButtonsInteractable(true);
@@ -168,6 +170,7 @@ public class SlotMachineUI : MonoBehaviour
 
     public void ShowJackpot(int payout)
     {
+        Camerashake.shake(duration: 1f, strength: 0.7f);
         SetMessage($"JACKPOT! +{payout} credits!", jackpotColor);
         ShowPayout(payout);
         SetBetButtonsInteractable(true);
@@ -175,6 +178,7 @@ public class SlotMachineUI : MonoBehaviour
 
     public void ShowLose()
     {
+        Camerashake.shake(duration: 0.2f, strength: 0.6f);
         SetMessage("Try again!", loseColor);
         ClearPayout();
         SetBetButtonsInteractable(true);
@@ -187,6 +191,8 @@ public class SlotMachineUI : MonoBehaviour
 
     public void ShowPlayerWin()
     {
+       
+       
         WinPanel.SetActive(true);
         Debug.Log("win");
 }

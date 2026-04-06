@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class camerashake : MonoBehaviour
+public class Camerashake : MonoBehaviour
 {
-    public static camerashake instance;
+    public static Camerashake instance;
     private void Awake() => instance = this;
 
     void onshake(float duration, float strength)
     {
+        Debug.Log($"SHAKE CALLED: duration={duration}, strength={strength}");
         transform.DOShakePosition(duration, strength);
         transform.DOShakeRotation(duration, strength);
     }
