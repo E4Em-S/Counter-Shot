@@ -529,7 +529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -76.92053, y: 53.841125}
+  m_AnchoredPosition: {x: -76.92041, y: 53.841064}
   m_SizeDelta: {x: 240.778, y: 76.1589}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &167108601
@@ -1186,7 +1186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29747918, y: 0.065000005}
   m_AnchorMax: {x: 0.33400002, y: 0.086}
-  m_AnchoredPosition: {x: -5.5, y: -6.763489}
+  m_AnchoredPosition: {x: -5.5, y: -6.76355}
   m_SizeDelta: {x: 5.04599, y: 13.527}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &323791678
@@ -1594,6 +1594,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1675,6 +1676,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aed86b7d8829fbc47a303bac2724b189, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.311
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &575839773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,7 +1806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08943751, y: 0.04277778}
   m_AnchorMax: {x: 0.26943752, y: 0.09900001}
-  m_AnchoredPosition: {x: -13, y: 13.32}
+  m_AnchoredPosition: {x: -13, y: 13.319946}
   m_SizeDelta: {x: 23.093903, y: -5.8409996}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &575839775
@@ -3729,10 +3826,10 @@ MonoBehaviour:
   creditsToWin: 100000
   spinDuration: 2
   reelStopDelay: 0.4
-  spinSound: {fileID: 0}
-  winSound: {fileID: 0}
-  jackpotSound: {fileID: 0}
-  loseSound: {fileID: 0}
+  spinSound: {fileID: 8300000, guid: a848fe957a18a4f49a4542114a67eb47, type: 3}
+  winSound: {fileID: 8300000, guid: ead64f652e5809d438b821b6a6d8bfe0, type: 3}
+  jackpotSound: {fileID: 8300000, guid: 796c76219e0e469419443e7e84db9b9f, type: 3}
+  loseSound: {fileID: 8300000, guid: 4de432d4795a1cd4eb476af2219b0b37, type: 3}
 --- !u!1 &1704524963
 GameObject:
   m_ObjectHideFlags: 0
