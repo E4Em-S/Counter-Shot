@@ -57,7 +57,7 @@ public class SlotMachineUI : MonoBehaviour
 
         UpdateCreditsImmediate(startingCredits);
         UpdateBetDisplay();
-        SetMessage("Pull the lever!", defaultColor);
+        SetMessage("Push the button!", defaultColor);
         ClearPayout();
 
         if (spinButton != null)

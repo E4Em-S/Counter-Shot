@@ -162,6 +162,7 @@ public class SlotMachine : MonoBehaviour
         {
             if (payTable.IsJackpot(finalResults))
             {
+                Camerashake.shake(duration: 2f, strength: 2f);
 
                 ui?.ShowJackpot(payout);
                 PlaySound(jackpotSound);
@@ -175,6 +176,7 @@ public class SlotMachine : MonoBehaviour
         }
         else
         {
+            Camerashake.shake(duration: 2f, strength: 2f);
             ui?.ShowLose();
             PlaySound(loseSound);
         }

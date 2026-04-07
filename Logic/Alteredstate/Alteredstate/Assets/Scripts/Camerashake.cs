@@ -10,6 +10,7 @@ public class Camerashake : MonoBehaviour
 
     void onshake(float duration, float strength)
     {
+        transform.DOKill();
         Debug.Log($"SHAKE CALLED: duration={duration}, strength={strength}");
         transform.DOShakePosition(duration, strength);
         transform.DOShakeRotation(duration, strength);
