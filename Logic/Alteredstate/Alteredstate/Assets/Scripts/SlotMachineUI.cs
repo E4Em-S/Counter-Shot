@@ -45,7 +45,7 @@ public class SlotMachineUI : MonoBehaviour
     private Coroutine creditAnimCoroutine;
     public GameObject WinPanel;
     public GameObject LosePanel;
-
+    public TextMeshProUGUI goalText;
     // Callback to notify SlotMachine when bet changes
     public System.Action<int> OnBetChanged;
 
@@ -87,8 +87,10 @@ public class SlotMachineUI : MonoBehaviour
     }
     private void Start()
     {
+
         WinPanel.SetActive(false);
         LosePanel.SetActive(false);
+  
     }
 
 
@@ -233,6 +235,11 @@ public class SlotMachineUI : MonoBehaviour
         UpdateBetButtons();
     }
 
+    public void UpdateGoalText(int goal)
+    {
+        if (goalText != null)
+            goalText.text = $"GOAL: ${goal.ToString("N0")}";
+    }
     private void UpdateBetButtons()
     {
         if (decreaseBetButton != null)

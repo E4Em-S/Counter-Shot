@@ -6,10 +6,10 @@ public class Winpannel : MonoBehaviour
 {
    public void Retry()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void Quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }
